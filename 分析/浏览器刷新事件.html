@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>浏览器刷新事件</title>
+</head>
+<body>
+<script>
+    window.onbeforeunload = function () {
+        window.name = "刷新";
+        debugger
+    };
+
+    window.onunload = function () {
+        window.name = "刷新";
+        debugger
+    };
+
+    window.onload = function () {
+        window.name
+        debugger
+    }
+</script>
+</body>
+</html>

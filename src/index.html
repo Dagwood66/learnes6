@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // let 只在声明的代码块内有效
+    // let 在for()里面声明的只在for代码块内有效
+    // let 不存在变量提升(必须在声明后使用)
+    // let 暂时性死区(声明前使用报错ReferenceError)
+    // let 相同作用域不允许重复声明
+
+    // const 不存在变量提升(必须在声明后使用)
+    // const 暂时性死区(声明前使用报错ReferenceError)
+    // const 相同作用域不允许重复声明
+    // const 如果const声明的是对象,对象地址不可改变,对象内容可以变化
+
+    // 全局作用域 函数作用域 块级作用域
+
+    /*
+    * 声明变量的方法
+    *   var
+    *   function
+    *   let
+    *   const
+    *   import
+    *   class
+    * */
+
+    // var function 声明的全局变量依旧是顶层对象属性，其余不是
+
+
+    // TODO  块级作用域与函数声明
+    // TODO  do 表达式
+
+    var a = 1;
+    let b = 2;
+
+    console.log(a);
+    console.log(b);
+
+    console.log(window.a);
+    console.log(window.b);
+</script>
+</body>
+</html>

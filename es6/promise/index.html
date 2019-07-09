@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*
+    * 链式调用-成功/拒绝都要返回数据
+    * catch使用时then只可以存在一个参数,否则catch无效,
+    * catch可以捕获代码之前的链式错误
+    * all 同时请求,全部完成
+    * race 同时请求,完成一个即完成
+    * */
+    // TODO done 实现
+    // TODO finally 实现
+    let promise = new Promise(function (resolve, reject) {
+        let data = {a: 1};
+//        resolve(data);
+        reject(new Error("Error"));
+    });
+
+    promise.then(function (data) {
+        console.log(data);
+        return data;
+    }).then(function (data) {
+        console.log(data);
+        return data;
+    }).catch(function (error) {
+        console.log("catch:" + error);
+    });
+
+</script>
+</body>
+</html>

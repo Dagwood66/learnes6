@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let url = "http://localhost:8080/learnshop/api/login";
+    let request = new XMLHttpRequest();
+    request.open("GET", url);
+    request.responseType = "text";
+    request.onload = function () {
+        console.log(request.response);
+    };
+    request.send();
+</script>
+</body>
+</html>

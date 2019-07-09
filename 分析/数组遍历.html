@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // for each for-of for-in
+    // 执行时间 for-in > for-of > each > for > for优化
+    // each return break 无效
+    console.time("init");
+    let arr = (function () {
+        let newVar = [];
+        let length = 1000000;
+        for (let i = 0; i < length; i++) {
+            newVar.push("" + i);
+        }
+        return newVar;
+    })();
+    console.timeEnd("init");
+
+    // for
+    console.time("for");
+    for (let i = 0; i < arr.length; i++) {
+        arr[i];
+    }
+    console.timeEnd("for");
+
+    // for优化
+    console.time("for-o");
+    for (let i = 0, l = arr.length; i < l; i++) {
+        arr[i];
+    }
+    console.timeEnd("for-o");
+
+    // for-each
+    console.time("for-each");
+    arr.forEach(function (item) {
+        item;
+    });
+    console.timeEnd("for-each");
+
+    // for-of
+    console.time("for-of");
+    for (let i of arr) {
+        i;
+    }
+    console.timeEnd("for-of");
+
+    // for-of
+    console.time("for-in");
+    for (let i in arr) {
+        i;
+    }
+    console.timeEnd("for-in");
+
+</script>
+</body>
+</html>

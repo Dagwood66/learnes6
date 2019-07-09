@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Title</title>
+</head>
+<body>
+<!--注意添加(),否则不执行-->
+<button id="btn1" onclick="clickHandle1()">方式1</button>
+<button id="btn2">方式2</button>
+<button id="btn3">方式3</button>
+<script>
+    // TODO 事件监听的执行顺序 事件监听禁止下发
+    let btn1Dom = document.querySelector("#btn1");
+    let btn2Dom = document.querySelector("#btn2");
+    let btn3Dom = document.querySelector("#btn3");
+
+    function clickHandle1() {
+        console.log("方式1");
+        // 注销事件
+        btn1Dom.removeAttribute("onclick");
+    }
+
+    // 只可添加一个处理事件
+    btn2Dom.onclick = function () {
+        console.log("方式2");
+        // 注销事件
+        btn2Dom.onclick = null;
+    };
+
+    // 可注册多个监听事件
+    btn3Dom.addEventListener("click", function clickHandle3() {
+        console.log("3");
+        // 注销事件
+        btn3Dom.removeEventListener("click", clickHandle3);
+    });
+    btn3Dom.addEventListener("click", function clickHandle31() {
+        console.log("3-1");
+        // 注销事件
+        btn3Dom.removeEventListener("click", clickHandle31);
+    });
+    btn3Dom.addEventListener("click", function () {
+        console.log("3-2");
+        // 不推荐 严格模式禁止使用
+        btn3Dom.removeEventListener("click", arguments.callee);
+    });
+
+    // 事件触发
+    // onclick click 区别
+    // onclick 调用onclick方法,无法对监听事件使用
+    // click 触发event事件
+    //    btn1Dom.onclick();
+    //    btn2Dom.onclick();
+    //    btn3Dom.onclick();
+    //    btn1Dom.click();
+    //    btn2Dom.click();
+    //    btn3Dom.click();
+    // 触发监听事件
+    //     创建事件 初始化事件 触发事件
+    //    let event = document.createEvent("Event");
+    //    event.initEvent("click", false, false);
+    //    btn1Dom.dispatchEvent(event);
+    //    btn2Dom.dispatchEvent(event);
+    //    btn3Dom.dispatchEvent(event);
+</script>
+</body>
+</html>

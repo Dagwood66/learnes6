@@ -1,0 +1,3215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<script>
+    let {paths} = {
+        "swagger": "2.0",
+        "info": {"version": "v2", "title": "gzh"},
+        "basePath": "/api",
+        "paths": {
+            "/BdsInfo/{id}": {
+                "get": {
+                    "tags": ["BdsInfo"],
+                    "operationId": "BdsInfoByIdGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {"name": "id", "in": "path", "required": true, "type": "string"}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/BdsInfo/ByIMEI/{id}": {
+                "get": {
+                    "tags": ["BdsInfo"],
+                    "operationId": "BdsInfoByIMEIByIdGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {"name": "id", "in": "path", "required": true, "type": "string"}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/BdsInfo/ToComp/{compCode}": {
+                "put": {
+                    "tags": ["BdsInfo"],
+                    "operationId": "BdsInfoToCompByCompCodePut",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {"name": "compCode", "in": "path", "required": true, "type": "string"}, {
+                        "name": "value",
+                        "in": "body",
+                        "required": false,
+                        "schema": {"uniqueItems": false, "type": "array", "items": {"type": "string"}}
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/BdsInfo/BindToCar": {
+                "put": {
+                    "tags": ["BdsInfo"],
+                    "operationId": "BdsInfoBindToCarPut",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "value",
+                        "in": "body",
+                        "required": false,
+                        "schema": {"uniqueItems": false, "type": "array", "items": {"$ref": "#/definitions/dbKeyValue"}}
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/BdsInfo/{imei}": {
+                "patch": {
+                    "tags": ["BdsInfo"],
+                    "operationId": "BdsInfoByImeiPatch",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {"name": "imei", "in": "path", "required": true, "type": "string"}, {
+                        "name": "value",
+                        "in": "body",
+                        "required": false,
+                        "schema": {"uniqueItems": false, "type": "array", "items": {"$ref": "#/definitions/Operation"}}
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/BdsInfo/WareHouseIn": {
+                "post": {
+                    "tags": ["BdsInfo"],
+                    "operationId": "BdsInfoWareHouseInPost",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "value",
+                        "in": "body",
+                        "required": false,
+                        "schema": {"uniqueItems": false, "type": "array", "items": {"$ref": "#/definitions/BdsInfoIn"}}
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/BdsInfo/WareHouseRefer": {
+                "put": {
+                    "tags": ["BdsInfo"],
+                    "operationId": "BdsInfoWareHouseReferPut",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "value",
+                        "in": "body",
+                        "required": false,
+                        "schema": {
+                            "uniqueItems": false,
+                            "type": "array",
+                            "items": {"$ref": "#/definitions/BdsInfoRefer"}
+                        }
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/BdsInfo/BdsToCar": {
+                "put": {
+                    "tags": ["BdsInfo"],
+                    "operationId": "BdsInfoBdsToCarPut",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "value",
+                        "in": "body",
+                        "required": false,
+                        "schema": {"uniqueItems": false, "type": "array", "items": {"$ref": "#/definitions/BdsToCar"}}
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/BdsInfo/Cmd": {
+                "post": {
+                    "tags": ["BdsInfo"],
+                    "operationId": "BdsInfoCmdPost",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "value",
+                        "in": "body",
+                        "required": false,
+                        "schema": {"uniqueItems": false, "type": "array", "items": {"$ref": "#/definitions/CmdInfo"}}
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/BookEval": {
+                "get": {
+                    "tags": ["BookEval"],
+                    "operationId": "BookEvalGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{"name": "access_token", "in": "header", "required": false, "type": "string"}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/BookEval/{id}": {
+                "get": {
+                    "tags": ["BookEval"],
+                    "operationId": "BookEvalByIdGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {"name": "id", "in": "path", "required": true, "type": "number", "format": "double"}],
+                    "responses": {"200": {"description": "Success"}}
+                },
+                "delete": {
+                    "tags": ["BookEval"],
+                    "operationId": "BookEvalByIdDelete",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {"name": "id", "in": "path", "required": true, "type": "number", "format": "double"}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/BookEval/ToPassenger/{id}": {
+                "put": {
+                    "tags": ["BookEval"],
+                    "operationId": "BookEvalToPassengerByIdPut",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "number",
+                        "format": "double"
+                    }, {
+                        "name": "value",
+                        "in": "body",
+                        "required": false,
+                        "schema": {"$ref": "#/definitions/PassengerEval"}
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/BookEval/ToDriver/{id}": {
+                "put": {
+                    "tags": ["BookEval"],
+                    "operationId": "BookEvalToDriverByIdPut",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "number",
+                        "format": "double"
+                    }, {
+                        "name": "value",
+                        "in": "body",
+                        "required": false,
+                        "schema": {"$ref": "#/definitions/DriverEval"}
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/BookEval/ToCar/{id}": {
+                "put": {
+                    "tags": ["BookEval"],
+                    "operationId": "BookEvalToCarByIdPut",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "number",
+                        "format": "double"
+                    }, {"name": "value", "in": "body", "required": false, "schema": {"$ref": "#/definitions/CarEval"}}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/CarBook": {
+                "get": {
+                    "tags": ["CarBook"],
+                    "operationId": "CarBookGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "begin_date",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "format": "date-time"
+                    }, {
+                        "name": "end_date",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "format": "date-time"
+                    }, {
+                        "name": "query_all",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean",
+                        "default": false
+                    }, {
+                        "name": "from_index",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "default": 0
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                },
+                "post": {
+                    "tags": ["CarBook"],
+                    "operationId": "CarBookPost",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "car_book",
+                        "in": "body",
+                        "required": false,
+                        "schema": {"$ref": "#/definitions/CarBook"}
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/CarBook/Num/{id}": {
+                "get": {
+                    "tags": ["CarBook"],
+                    "operationId": "CarBookNumByIdGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {"name": "id", "in": "path", "required": true, "type": "number", "format": "double"}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/CarBook/{id}": {
+                "get": {
+                    "tags": ["CarBook"],
+                    "operationId": "CarBookByIdGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {"name": "id", "in": "path", "required": true, "type": "number", "format": "double"}],
+                    "responses": {"200": {"description": "Success"}}
+                },
+                "delete": {
+                    "tags": ["CarBook"],
+                    "operationId": "CarBookByIdDelete",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {"name": "id", "in": "path", "required": true, "type": "number", "format": "double"}],
+                    "responses": {"200": {"description": "Success"}}
+                },
+                "patch": {
+                    "tags": ["CarBook"],
+                    "operationId": "CarBookByIdPatch",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "number",
+                        "format": "double"
+                    }, {
+                        "name": "value",
+                        "in": "body",
+                        "required": false,
+                        "schema": {"uniqueItems": false, "type": "array", "items": {"$ref": "#/definitions/Operation"}}
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/CarBook/Staff/{id}": {
+                "get": {
+                    "tags": ["CarBook"],
+                    "operationId": "CarBookStaffByIdGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "number",
+                        "format": "double"
+                    }, {
+                        "name": "begin_date",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "format": "date-time"
+                    }, {
+                        "name": "end_date",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "format": "date-time"
+                    }, {
+                        "name": "query_all",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean",
+                        "default": false
+                    }, {
+                        "name": "from_index",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "default": 0
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/CarBook/Yardman": {
+                "get": {
+                    "tags": ["CarBook"],
+                    "operationId": "CarBookYardmanGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "from_index",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "default": 0
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/CarBook/DriverTrip": {
+                "get": {
+                    "tags": ["CarBook"],
+                    "operationId": "CarBookDriverTripGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "book_id",
+                        "in": "query",
+                        "required": false,
+                        "type": "number",
+                        "format": "double"
+                    }, {
+                        "name": "from_index",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "default": 0
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/CarBook/Driver": {
+                "get": {
+                    "tags": ["CarBook"],
+                    "operationId": "CarBookDriverGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "begin_date",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "format": "date-time"
+                    }, {"name": "end_date", "in": "query", "required": false, "type": "string", "format": "date-time"}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/CarBook/DriverToCars": {
+                "get": {
+                    "tags": ["CarBook"],
+                    "operationId": "CarBookDriverToCarsGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{"name": "access_token", "in": "header", "required": false, "type": "string"}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/CarBook/CarMemo/{id}": {
+                "get": {
+                    "tags": ["CarBook"],
+                    "operationId": "CarBookCarMemoByIdGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {"name": "id", "in": "path", "required": true, "type": "number", "format": "double"}],
+                    "responses": {"200": {"description": "Success"}}
+                },
+                "post": {
+                    "tags": ["CarBook"],
+                    "operationId": "CarBookCarMemoByIdPost",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "number",
+                        "format": "double"
+                    }, {"name": "memo", "in": "body", "required": false, "schema": {"type": "string"}}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/CarBook/car_book_later": {
+                "put": {
+                    "tags": ["CarBook"],
+                    "operationId": "CarBookCar_book_laterPut",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "value",
+                        "in": "body",
+                        "required": false,
+                        "schema": {"$ref": "#/definitions/CarBookLater"}
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/CarBook/car_book_later_cancel/{id}": {
+                "put": {
+                    "tags": ["CarBook"],
+                    "operationId": "CarBookCar_book_later_cancelByIdPut",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {"name": "id", "in": "path", "required": true, "type": "number", "format": "double"}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/CarBook/book_audit": {
+                "put": {
+                    "tags": ["CarBook"],
+                    "operationId": "CarBookBook_auditPut",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "value",
+                        "in": "body",
+                        "required": false,
+                        "schema": {"uniqueItems": false, "type": "array", "items": {"$ref": "#/definitions/BookAudit"}}
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/CarBook/dispat_refuse/{id}": {
+                "put": {
+                    "tags": ["CarBook"],
+                    "operationId": "CarBookDispat_refuseByIdPut",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "number",
+                        "format": "double"
+                    }, {"name": "refuse_reason", "in": "body", "required": false, "schema": {"type": "string"}}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/CarBook/book_dispat/{id}": {
+                "put": {
+                    "tags": ["CarBook"],
+                    "operationId": "CarBookBook_dispatByIdPut",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "number",
+                        "format": "double"
+                    }, {
+                        "name": "value",
+                        "in": "body",
+                        "required": false,
+                        "schema": {"$ref": "#/definitions/BookDispat"}
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/CarBook/book_dispat_cancel/{id}": {
+                "put": {
+                    "tags": ["CarBook"],
+                    "operationId": "CarBookBook_dispat_cancelByIdPut",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {"name": "id", "in": "path", "required": true, "type": "number", "format": "double"}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/CarBook/TripBegin/{id}": {
+                "put": {
+                    "tags": ["CarBook"],
+                    "operationId": "CarBookTripBeginByIdPut",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "number",
+                        "format": "double"
+                    }, {
+                        "name": "value",
+                        "in": "body",
+                        "required": false,
+                        "schema": {"$ref": "#/definitions/TripBegin"}
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/CarBook/TripBeginCancel/{id}": {
+                "put": {
+                    "tags": ["CarBook"],
+                    "operationId": "CarBookTripBeginCancelByIdPut",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {"name": "id", "in": "path", "required": true, "type": "number", "format": "double"}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/CarBook/TripEnd/{id}": {
+                "put": {
+                    "tags": ["CarBook"],
+                    "operationId": "CarBookTripEndByIdPut",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "number",
+                        "format": "double"
+                    }, {"name": "value", "in": "body", "required": false, "schema": {"$ref": "#/definitions/TripEnd"}}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/CarBook/TripEndCancel/{id}": {
+                "put": {
+                    "tags": ["CarBook"],
+                    "operationId": "CarBookTripEndCancelByIdPut",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {"name": "id", "in": "path", "required": true, "type": "number", "format": "double"}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/CarBook/book_end/{id}": {
+                "put": {
+                    "tags": ["CarBook"],
+                    "operationId": "CarBookBook_endByIdPut",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "number",
+                        "format": "double"
+                    }, {"name": "value", "in": "body", "required": false, "schema": {"$ref": "#/definitions/BookEnd"}}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/CarBook/book_end_cancel/{id}": {
+                "put": {
+                    "tags": ["CarBook"],
+                    "operationId": "CarBookBook_end_cancelByIdPut",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {"name": "id", "in": "path", "required": true, "type": "number", "format": "double"}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/CarCost/{sys_sort}": {
+                "get": {
+                    "tags": ["CarCost"],
+                    "operationId": "CarCostBySys_sortGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {"name": "sys_sort", "in": "path", "required": true, "type": "string"}, {
+                        "name": "begin_date",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "format": "date-time"
+                    }, {
+                        "name": "end_date",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "format": "date-time"
+                    }, {
+                        "name": "is_page",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean",
+                        "default": true
+                    }, {
+                        "name": "from_index",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "default": 0
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/CarCost": {
+                "post": {
+                    "tags": ["CarCost"],
+                    "operationId": "CarCostPost",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {"name": "value", "in": "body", "required": false, "schema": {"$ref": "#/definitions/CarCost"}}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/CarCost/{id}": {
+                "delete": {
+                    "tags": ["CarCost"],
+                    "operationId": "CarCostByIdDelete",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {"name": "id", "in": "path", "required": true, "type": "number", "format": "double"}],
+                    "responses": {"200": {"description": "Success"}}
+                },
+                "patch": {
+                    "tags": ["CarCost"],
+                    "operationId": "CarCostByIdPatch",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "number",
+                        "format": "double"
+                    }, {
+                        "name": "jp",
+                        "in": "body",
+                        "required": false,
+                        "schema": {"uniqueItems": false, "type": "array", "items": {"$ref": "#/definitions/Operation"}}
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/CarInfo": {
+                "get": {
+                    "tags": ["CarInfo"],
+                    "operationId": "CarInfoGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{"name": "access_token", "in": "header", "required": false, "type": "string"}],
+                    "responses": {"200": {"description": "Success"}}
+                },
+                "post": {
+                    "tags": ["CarInfo"],
+                    "operationId": "CarInfoPost",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {"name": "value", "in": "body", "required": false, "schema": {"$ref": "#/definitions/CarInfo"}}],
+                    "responses": {"200": {"description": "Success"}}
+                },
+                "delete": {
+                    "tags": ["CarInfo"],
+                    "operationId": "CarInfoDelete",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "value",
+                        "in": "body",
+                        "required": false,
+                        "schema": {
+                            "uniqueItems": false,
+                            "type": "array",
+                            "items": {"format": "double", "type": "number"}
+                        }
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/CarInfo/ForCoor": {
+                "get": {
+                    "tags": ["CarInfo"],
+                    "operationId": "CarInfoForCoorGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{"name": "access_token", "in": "header", "required": false, "type": "string"}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/CarInfo/Summ": {
+                "get": {
+                    "tags": ["CarInfo"],
+                    "operationId": "CarInfoSummGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{"name": "access_token", "in": "header", "required": false, "type": "string"}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/CarInfo/car_status": {
+                "get": {
+                    "tags": ["CarInfo"],
+                    "operationId": "CarInfoCar_statusGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{"name": "access_token", "in": "header", "required": false, "type": "string"}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/CarInfo/{id}": {
+                "get": {
+                    "tags": ["CarInfo"],
+                    "operationId": "CarInfoByIdGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {"name": "id", "in": "path", "required": true, "type": "number", "format": "double"}],
+                    "responses": {"200": {"description": "Success"}}
+                },
+                "delete": {
+                    "tags": ["CarInfo"],
+                    "operationId": "CarInfoByIdDelete",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {"name": "id", "in": "path", "required": true, "type": "number", "format": "double"}],
+                    "responses": {"200": {"description": "Success"}}
+                },
+                "patch": {
+                    "tags": ["CarInfo"],
+                    "operationId": "CarInfoByIdPatch",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "number",
+                        "format": "double"
+                    }, {
+                        "name": "value",
+                        "in": "body",
+                        "required": false,
+                        "schema": {"uniqueItems": false, "type": "array", "items": {"$ref": "#/definitions/Operation"}}
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/CarInfo/dispat": {
+                "get": {
+                    "tags": ["CarInfo"],
+                    "operationId": "CarInfoDispatGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {"name": "query_all", "in": "query", "required": false, "type": "boolean", "default": false}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/CarInfo/BulkImport": {
+                "put": {
+                    "tags": ["CarInfo"],
+                    "operationId": "CarInfoBulkImportPut",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "value",
+                        "in": "body",
+                        "required": false,
+                        "schema": {
+                            "uniqueItems": false,
+                            "type": "array",
+                            "items": {"$ref": "#/definitions/CarInfo_bulk"}
+                        }
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/CarInfo/tree": {
+                "get": {
+                    "tags": ["CarInfo"],
+                    "operationId": "CarInfoTreeGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{"name": "access_token", "in": "header", "required": false, "type": "string"}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/CompInfo": {
+                "get": {
+                    "tags": ["CompInfo"],
+                    "operationId": "CompInfoGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{"name": "access_token", "in": "header", "required": false, "type": "string"}],
+                    "responses": {"200": {"description": "Success"}}
+                },
+                "post": {
+                    "tags": ["CompInfo"],
+                    "operationId": "CompInfoPost",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "value",
+                        "in": "body",
+                        "required": false,
+                        "schema": {"$ref": "#/definitions/CompInfo"}
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/CompInfo/{id}": {
+                "get": {
+                    "tags": ["CompInfo"],
+                    "operationId": "CompInfoByIdGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {"name": "id", "in": "path", "required": true, "type": "string"}],
+                    "responses": {"200": {"description": "Success"}}
+                },
+                "delete": {
+                    "tags": ["CompInfo"],
+                    "operationId": "CompInfoByIdDelete",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {"name": "id", "in": "path", "required": true, "type": "string"}],
+                    "responses": {"200": {"description": "Success"}}
+                },
+                "patch": {
+                    "tags": ["CompInfo"],
+                    "operationId": "CompInfoByIdPatch",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {"name": "id", "in": "path", "required": true, "type": "string"}, {
+                        "name": "value",
+                        "in": "body",
+                        "required": false,
+                        "schema": {"uniqueItems": false, "type": "array", "items": {"$ref": "#/definitions/Operation"}}
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/CoorInfo/Position": {
+                "get": {
+                    "tags": ["CoorInfo"],
+                    "operationId": "CoorInfoPositionGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "typ",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }, {"name": "value", "in": "query", "required": false, "type": "string"}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/CoorInfo/Bus": {
+                "get": {
+                    "tags": ["CoorInfo"],
+                    "operationId": "CoorInfoBusGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {"name": "value", "in": "query", "required": false, "type": "string"}, {
+                        "name": "comp_code",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "default": ""
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/CoorInfo/Position/Area": {
+                "get": {
+                    "tags": ["CoorInfo"],
+                    "operationId": "CoorInfoPositionAreaGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{"name": "access_token", "in": "header", "required": false, "type": "string"}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/CoorInfo/Track/{id}": {
+                "get": {
+                    "tags": ["CoorInfo"],
+                    "operationId": "CoorInfoTrackByIdGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {"name": "id", "in": "path", "required": true, "type": "string"}, {
+                        "name": "begin_time",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "format": "date-time"
+                    }, {"name": "end_time", "in": "query", "required": false, "type": "string", "format": "date-time"}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/CoorInfo/Track/Sect/{id}": {
+                "get": {
+                    "tags": ["CoorInfo"],
+                    "operationId": "CoorInfoTrackSectByIdGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "number",
+                        "format": "double"
+                    }, {
+                        "name": "sect_date",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "format": "date-time"
+                    }, {"name": "end_date", "in": "query", "required": false, "type": "string", "format": "date-time"}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/CoorInfo/Track/SectPage/{id}": {
+                "get": {
+                    "tags": ["CoorInfo"],
+                    "operationId": "CoorInfoTrackSectPageByIdGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "number",
+                        "format": "double"
+                    }, {
+                        "name": "page_num",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }, {"name": "page_size", "in": "query", "required": false, "type": "integer", "format": "int32"}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/CoorInfo/Follow/{id}": {
+                "get": {
+                    "tags": ["CoorInfo"],
+                    "operationId": "CoorInfoFollowByIdGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "number",
+                        "format": "double"
+                    }, {
+                        "name": "last_time",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "format": "date-time"
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/CoorInfo/PlayBack": {
+                "post": {
+                    "tags": ["CoorInfo"],
+                    "operationId": "CoorInfoPlayBackPost",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "time",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "format": "date-time"
+                    }, {"name": "cars", "in": "body", "required": false, "schema": {"type": "string"}}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/FenceInfo": {
+                "get": {
+                    "tags": ["FenceInfo"],
+                    "operationId": "FenceInfoGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{"name": "access_token", "in": "header", "required": false, "type": "string"}],
+                    "responses": {"200": {"description": "Success"}}
+                },
+                "post": {
+                    "tags": ["FenceInfo"],
+                    "operationId": "FenceInfoPost",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "value",
+                        "in": "body",
+                        "required": false,
+                        "schema": {"$ref": "#/definitions/FenceInfo"}
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/FenceInfo/{id}": {
+                "delete": {
+                    "tags": ["FenceInfo"],
+                    "operationId": "FenceInfoByIdDelete",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {"name": "id", "in": "path", "required": true, "type": "number", "format": "double"}],
+                    "responses": {"200": {"description": "Success"}}
+                },
+                "patch": {
+                    "tags": ["FenceInfo"],
+                    "operationId": "FenceInfoByIdPatch",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "number",
+                        "format": "double"
+                    }, {
+                        "name": "value",
+                        "in": "body",
+                        "required": false,
+                        "schema": {"uniqueItems": false, "type": "array", "items": {"$ref": "#/definitions/Operation"}}
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/OilCard": {
+                "get": {
+                    "tags": ["OilCard"],
+                    "operationId": "OilCardGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{"name": "access_token", "in": "header", "required": false, "type": "string"}],
+                    "responses": {"200": {"description": "Success"}}
+                },
+                "post": {
+                    "tags": ["OilCard"],
+                    "operationId": "OilCardPost",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {"name": "value", "in": "body", "required": false, "schema": {"$ref": "#/definitions/OilCard"}}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/OilCard/{id}": {
+                "get": {
+                    "tags": ["OilCard"],
+                    "operationId": "OilCardByIdGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {"name": "id", "in": "path", "required": true, "type": "number", "format": "double"}],
+                    "responses": {"200": {"description": "Success"}}
+                },
+                "delete": {
+                    "tags": ["OilCard"],
+                    "operationId": "OilCardByIdDelete",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {"name": "id", "in": "path", "required": true, "type": "number", "format": "double"}],
+                    "responses": {"200": {"description": "Success"}}
+                },
+                "patch": {
+                    "tags": ["OilCard"],
+                    "operationId": "OilCardByIdPatch",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "number",
+                        "format": "double"
+                    }, {
+                        "name": "jp",
+                        "in": "body",
+                        "required": false,
+                        "schema": {"uniqueItems": false, "type": "array", "items": {"$ref": "#/definitions/Operation"}}
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/OilCard/BulkImport": {
+                "put": {
+                    "tags": ["OilCard"],
+                    "operationId": "OilCardBulkImportPut",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "value",
+                        "in": "body",
+                        "required": false,
+                        "schema": {
+                            "uniqueItems": false,
+                            "type": "array",
+                            "items": {"$ref": "#/definitions/OilCard_Bulk"}
+                        }
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/OilCardTran": {
+                "get": {
+                    "tags": ["OilCardTran"],
+                    "operationId": "OilCardTranGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "begin_date",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "format": "date-time"
+                    }, {"name": "end_date", "in": "query", "required": false, "type": "string", "format": "date-time"}],
+                    "responses": {"200": {"description": "Success"}}
+                },
+                "post": {
+                    "tags": ["OilCardTran"],
+                    "operationId": "OilCardTranPost",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "value",
+                        "in": "body",
+                        "required": false,
+                        "schema": {"$ref": "#/definitions/OilCardTran"}
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/OilCardTran/{id}": {
+                "get": {
+                    "tags": ["OilCardTran"],
+                    "operationId": "OilCardTranByIdGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "number",
+                        "format": "double"
+                    }, {
+                        "name": "begin_date",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "format": "date-time"
+                    }, {"name": "end_date", "in": "query", "required": false, "type": "string", "format": "date-time"}],
+                    "responses": {"200": {"description": "Success"}}
+                },
+                "delete": {
+                    "tags": ["OilCardTran"],
+                    "operationId": "OilCardTranByIdDelete",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {"name": "id", "in": "path", "required": true, "type": "number", "format": "double"}],
+                    "responses": {"200": {"description": "Success"}}
+                },
+                "patch": {
+                    "tags": ["OilCardTran"],
+                    "operationId": "OilCardTranByIdPatch",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "number",
+                        "format": "double"
+                    }, {
+                        "name": "value",
+                        "in": "body",
+                        "required": false,
+                        "schema": {"uniqueItems": false, "type": "array", "items": {"$ref": "#/definitions/Operation"}}
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/OilCardTran/BulkImport": {
+                "put": {
+                    "tags": ["OilCardTran"],
+                    "operationId": "OilCardTranBulkImportPut",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "value",
+                        "in": "body",
+                        "required": false,
+                        "schema": {
+                            "uniqueItems": false,
+                            "type": "array",
+                            "items": {"$ref": "#/definitions/OilCardTran2"}
+                        }
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/OperLog/item/{id}": {
+                "get": {
+                    "tags": ["OperLog"],
+                    "operationId": "OperLogItemByIdGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "number",
+                        "format": "double"
+                    }, {"name": "log_type", "in": "query", "required": false, "type": "string"}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/PrivateCarBill": {
+                "get": {
+                    "tags": ["PrivateCarBill"],
+                    "operationId": "PrivateCarBillGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "begin_date",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "format": "date-time"
+                    }, {
+                        "name": "end_date",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "format": "date-time"
+                    }, {
+                        "name": "bill_type",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }, {
+                        "name": "staff_id",
+                        "in": "query",
+                        "required": false,
+                        "type": "number",
+                        "format": "double"
+                    }, {
+                        "name": "car_id",
+                        "in": "query",
+                        "required": false,
+                        "type": "number",
+                        "format": "double"
+                    }, {"name": "trn_code", "in": "query", "required": false, "type": "string"}],
+                    "responses": {"200": {"description": "Success"}}
+                },
+                "post": {
+                    "tags": ["PrivateCarBill"],
+                    "operationId": "PrivateCarBillPost",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "value",
+                        "in": "body",
+                        "required": false,
+                        "schema": {"$ref": "#/definitions/PrivateCarBill"}
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/PrivateCarBill/{id}": {
+                "get": {
+                    "tags": ["PrivateCarBill"],
+                    "operationId": "PrivateCarBillByIdGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "number",
+                        "format": "double"
+                    }, {
+                        "name": "begin_date",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "format": "date-time"
+                    }, {"name": "end_date", "in": "query", "required": false, "type": "string", "format": "date-time"}],
+                    "responses": {"200": {"description": "Success"}}
+                },
+                "delete": {
+                    "tags": ["PrivateCarBill"],
+                    "operationId": "PrivateCarBillByIdDelete",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {"name": "id", "in": "path", "required": true, "type": "number", "format": "double"}],
+                    "responses": {"200": {"description": "Success"}}
+                },
+                "patch": {
+                    "tags": ["PrivateCarBill"],
+                    "operationId": "PrivateCarBillByIdPatch",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "number",
+                        "format": "double"
+                    }, {
+                        "name": "value",
+                        "in": "body",
+                        "required": false,
+                        "schema": {"uniqueItems": false, "type": "array", "items": {"$ref": "#/definitions/Operation"}}
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/QueryScope": {
+                "get": {
+                    "tags": ["QueryScope"],
+                    "operationId": "QueryScopeGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{"name": "access_token", "in": "header", "required": false, "type": "string"}],
+                    "responses": {"200": {"description": "Success"}}
+                },
+                "post": {
+                    "tags": ["QueryScope"],
+                    "operationId": "QueryScopePost",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "value",
+                        "in": "body",
+                        "required": false,
+                        "schema": {"$ref": "#/definitions/QueryScope"}
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/QueryScope/{id}": {
+                "delete": {
+                    "tags": ["QueryScope"],
+                    "operationId": "QueryScopeByIdDelete",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {"name": "id", "in": "path", "required": true, "type": "number", "format": "double"}],
+                    "responses": {"200": {"description": "Success"}}
+                },
+                "patch": {
+                    "tags": ["QueryScope"],
+                    "operationId": "QueryScopeByIdPatch",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "number",
+                        "format": "double"
+                    }, {
+                        "name": "value",
+                        "in": "body",
+                        "required": false,
+                        "schema": {"uniqueItems": false, "type": "array", "items": {"$ref": "#/definitions/Operation"}}
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/StaffBill": {
+                "get": {
+                    "tags": ["StaffBill"],
+                    "operationId": "StaffBillGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "begin_date",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "format": "date-time"
+                    }, {
+                        "name": "end_date",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "format": "date-time"
+                    }, {
+                        "name": "bill_type",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }, {
+                        "name": "staff_id",
+                        "in": "query",
+                        "required": false,
+                        "type": "number",
+                        "format": "double"
+                    }, {
+                        "name": "car_id",
+                        "in": "query",
+                        "required": false,
+                        "type": "number",
+                        "format": "double"
+                    }, {"name": "trn_code", "in": "query", "required": false, "type": "string"}],
+                    "responses": {"200": {"description": "Success"}}
+                },
+                "post": {
+                    "tags": ["StaffBill"],
+                    "operationId": "StaffBillPost",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "value",
+                        "in": "body",
+                        "required": false,
+                        "schema": {"$ref": "#/definitions/StaffBill"}
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/StaffBill/{id}": {
+                "get": {
+                    "tags": ["StaffBill"],
+                    "operationId": "StaffBillByIdGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "number",
+                        "format": "double"
+                    }, {
+                        "name": "begin_date",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "format": "date-time"
+                    }, {"name": "end_date", "in": "query", "required": false, "type": "string", "format": "date-time"}],
+                    "responses": {"200": {"description": "Success"}}
+                },
+                "delete": {
+                    "tags": ["StaffBill"],
+                    "operationId": "StaffBillByIdDelete",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {"name": "id", "in": "path", "required": true, "type": "number", "format": "double"}],
+                    "responses": {"200": {"description": "Success"}}
+                },
+                "patch": {
+                    "tags": ["StaffBill"],
+                    "operationId": "StaffBillByIdPatch",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "number",
+                        "format": "double"
+                    }, {
+                        "name": "value",
+                        "in": "body",
+                        "required": false,
+                        "schema": {"uniqueItems": false, "type": "array", "items": {"$ref": "#/definitions/Operation"}}
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/StaffBill/Array": {
+                "post": {
+                    "tags": ["StaffBill"],
+                    "operationId": "StaffBillArrayPost",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "value",
+                        "in": "body",
+                        "required": false,
+                        "schema": {"uniqueItems": false, "type": "array", "items": {"$ref": "#/definitions/StaffBill"}}
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/staffClock": {
+                "get": {
+                    "tags": ["staffClock"],
+                    "operationId": "StaffClockGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{"name": "access_token", "in": "header", "required": false, "type": "string"}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/staffClock/on_duty": {
+                "put": {
+                    "tags": ["staffClock"],
+                    "operationId": "StaffClockOn_dutyPut",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "value",
+                        "in": "body",
+                        "required": false,
+                        "schema": {"$ref": "#/definitions/OnDutyInfo"}
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/staffClock/off_duty/{id}": {
+                "put": {
+                    "tags": ["staffClock"],
+                    "operationId": "StaffClockOff_dutyByIdPut",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {"name": "id", "in": "path", "required": true, "type": "string"}, {
+                        "name": "value",
+                        "in": "body",
+                        "required": false,
+                        "schema": {"$ref": "#/definitions/OffDutyInfo"}
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/StaffInfo": {
+                "get": {
+                    "tags": ["StaffInfo"],
+                    "operationId": "StaffInfoGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{"name": "access_token", "in": "header", "required": false, "type": "string"}],
+                    "responses": {"200": {"description": "Success"}}
+                },
+                "post": {
+                    "tags": ["StaffInfo"],
+                    "operationId": "StaffInfoPost",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "value",
+                        "in": "body",
+                        "required": false,
+                        "schema": {"$ref": "#/definitions/StaffInfo"}
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/StaffInfo/Driver": {
+                "get": {
+                    "tags": ["StaffInfo"],
+                    "operationId": "StaffInfoDriverGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{"name": "access_token", "in": "header", "required": false, "type": "string"}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/StaffInfo/driver_status": {
+                "get": {
+                    "tags": ["StaffInfo"],
+                    "operationId": "StaffInfoDriver_statusGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{"name": "access_token", "in": "header", "required": false, "type": "string"}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/StaffInfo/Passenger": {
+                "get": {
+                    "tags": ["StaffInfo"],
+                    "operationId": "StaffInfoPassengerGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{"name": "access_token", "in": "header", "required": false, "type": "string"}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/StaffInfo/{id}": {
+                "get": {
+                    "tags": ["StaffInfo"],
+                    "operationId": "StaffInfoByIdGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {"name": "id", "in": "path", "required": true, "type": "number", "format": "double"}],
+                    "responses": {"200": {"description": "Success"}}
+                },
+                "delete": {
+                    "tags": ["StaffInfo"],
+                    "operationId": "StaffInfoByIdDelete",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {"name": "id", "in": "path", "required": true, "type": "number", "format": "double"}],
+                    "responses": {"200": {"description": "Success"}}
+                },
+                "patch": {
+                    "tags": ["StaffInfo"],
+                    "operationId": "StaffInfoByIdPatch",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "number",
+                        "format": "double"
+                    }, {
+                        "name": "jp",
+                        "in": "body",
+                        "required": false,
+                        "schema": {"uniqueItems": false, "type": "array", "items": {"$ref": "#/definitions/Operation"}}
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/StaffInfo/dispat": {
+                "get": {
+                    "tags": ["StaffInfo"],
+                    "operationId": "StaffInfoDispatGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {"name": "query_all", "in": "query", "required": false, "type": "boolean", "default": false}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/StaffInfo/bulk": {
+                "post": {
+                    "tags": ["StaffInfo"],
+                    "operationId": "StaffInfoBulkPost",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "value",
+                        "in": "body",
+                        "required": false,
+                        "schema": {
+                            "uniqueItems": false,
+                            "type": "array",
+                            "items": {"$ref": "#/definitions/StaffInfoBulk"}
+                        }
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/StaffInfo/modifyLoginPwd": {
+                "put": {
+                    "tags": ["StaffInfo"],
+                    "operationId": "StaffInfoModifyLoginPwdPut",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {"name": "oldAndNewPwd", "in": "body", "required": false, "schema": {"type": "object"}}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/StaffInfo/ResetLoginPwd/{id}": {
+                "put": {
+                    "tags": ["StaffInfo"],
+                    "operationId": "StaffInfoResetLoginPwdByIdPut",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {"name": "id", "in": "path", "required": true, "type": "number", "format": "double"}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/SysLog": {
+                "get": {
+                    "tags": ["SysLog"],
+                    "operationId": "SysLogGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{"name": "access_token", "in": "header", "required": false, "type": "string"}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/SysPara/car_img_png": {
+                "get": {
+                    "tags": ["SysPara"],
+                    "operationId": "SysParaCar_img_pngGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{"name": "access_token", "in": "header", "required": false, "type": "string"}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/SysPara/Dept": {
+                "get": {
+                    "tags": ["SysPara"],
+                    "operationId": "SysParaDeptGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{"name": "access_token", "in": "header", "required": false, "type": "string"}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/SysPara/Role": {
+                "get": {
+                    "tags": ["SysPara"],
+                    "operationId": "SysParaRoleGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{"name": "access_token", "in": "header", "required": false, "type": "string"}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/SysPara/Area": {
+                "get": {
+                    "tags": ["SysPara"],
+                    "operationId": "SysParaAreaGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{"name": "access_token", "in": "header", "required": false, "type": "string"}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/SysPara/use_property": {
+                "get": {
+                    "tags": ["SysPara"],
+                    "operationId": "SysParaUse_propertyGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{"name": "access_token", "in": "header", "required": false, "type": "string"}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/SysPara/cost": {
+                "get": {
+                    "tags": ["SysPara"],
+                    "operationId": "SysParaCostGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "valid_flg",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "default": 1
+                    }, {"name": "only_cost", "in": "query", "required": false, "type": "boolean", "default": true}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/SysPara": {
+                "post": {
+                    "tags": ["SysPara"],
+                    "operationId": "SysParaPost",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {"name": "value", "in": "body", "required": false, "schema": {"$ref": "#/definitions/SysPara"}}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/SysPara/{id}": {
+                "delete": {
+                    "tags": ["SysPara"],
+                    "operationId": "SysParaByIdDelete",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "number",
+                        "format": "double"
+                    }, {"name": "para_type", "in": "query", "required": false, "type": "string"}, {
+                        "name": "para_code",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                },
+                "patch": {
+                    "tags": ["SysPara"],
+                    "operationId": "SysParaByIdPatch",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "number",
+                        "format": "double"
+                    }, {
+                        "name": "value",
+                        "in": "body",
+                        "required": false,
+                        "schema": {"uniqueItems": false, "type": "array", "items": {"$ref": "#/definitions/Operation"}}
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/Token/TwoVerify": {
+                "get": {
+                    "tags": ["Token"],
+                    "operationId": "TokenTwoVerifyGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "key",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    }, {"name": "value", "in": "query", "required": false, "type": "string"}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/Token/Wx": {
+                "get": {
+                    "tags": ["Token"],
+                    "operationId": "TokenWxGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "wx_code",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "typ",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "default": 0
+                    }, {"name": "comp_code", "in": "query", "required": false, "type": "string", "default": ""}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/Token/Other": {
+                "get": {
+                    "tags": ["Token"],
+                    "operationId": "TokenOtherGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "compcode",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    }, {"name": "openid", "in": "query", "required": false, "type": "string"}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/Token": {
+                "post": {
+                    "tags": ["Token"],
+                    "operationId": "TokenPost",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "login_info",
+                        "in": "body",
+                        "required": false,
+                        "schema": {"$ref": "#/definitions/userInfo"}
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                },
+                "delete": {
+                    "tags": ["Token"],
+                    "operationId": "TokenDelete",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{"name": "access_token", "in": "header", "required": false, "type": "string"}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/Token/WxBindByUidPwd": {
+                "post": {
+                    "tags": ["Token"],
+                    "operationId": "TokenWxBindByUidPwdPost",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "openid",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "value",
+                        "in": "body",
+                        "required": false,
+                        "schema": {"$ref": "#/definitions/userInfo"}
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/Token/OtherBindByUidPwd": {
+                "post": {
+                    "tags": ["Token"],
+                    "operationId": "TokenOtherBindByUidPwdPost",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "openid",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "value",
+                        "in": "body",
+                        "required": false,
+                        "schema": {"$ref": "#/definitions/userInfo"}
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/Token/UnBindByToken": {
+                "post": {
+                    "tags": ["Token"],
+                    "operationId": "TokenUnBindByTokenPost",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{"name": "access_token", "in": "header", "required": false, "type": "string"}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/Token/UnBindByStaffID/{id}": {
+                "post": {
+                    "tags": ["Token"],
+                    "operationId": "TokenUnBindByStaffIDByIdPost",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "number",
+                        "format": "double"
+                    }, {"name": "logintype", "in": "query", "required": false, "type": "integer", "format": "int32"}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/TrafficTicket": {
+                "get": {
+                    "tags": ["TrafficTicket"],
+                    "operationId": "TrafficTicketGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "begin_date",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "format": "date-time"
+                    }, {"name": "end_date", "in": "query", "required": false, "type": "string", "format": "date-time"}],
+                    "responses": {"200": {"description": "Success"}}
+                },
+                "post": {
+                    "tags": ["TrafficTicket"],
+                    "operationId": "TrafficTicketPost",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "value",
+                        "in": "body",
+                        "required": false,
+                        "schema": {"$ref": "#/definitions/TrafficTicket"}
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/TrafficTicket/{id}": {
+                "get": {
+                    "tags": ["TrafficTicket"],
+                    "operationId": "TrafficTicketByIdGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "number",
+                        "format": "double"
+                    }, {
+                        "name": "begin_date",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "format": "date-time"
+                    }, {"name": "end_date", "in": "query", "required": false, "type": "string", "format": "date-time"}],
+                    "responses": {"200": {"description": "Success"}}
+                },
+                "delete": {
+                    "tags": ["TrafficTicket"],
+                    "operationId": "TrafficTicketByIdDelete",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {"name": "id", "in": "path", "required": true, "type": "number", "format": "double"}],
+                    "responses": {"200": {"description": "Success"}}
+                },
+                "patch": {
+                    "tags": ["TrafficTicket"],
+                    "operationId": "TrafficTicketByIdPatch",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "access_token",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }, {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "number",
+                        "format": "double"
+                    }, {
+                        "name": "value",
+                        "in": "body",
+                        "required": false,
+                        "schema": {"uniqueItems": false, "type": "array", "items": {"$ref": "#/definitions/Operation"}}
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/api/Values": {
+                "get": {
+                    "tags": ["Values"],
+                    "operationId": "ApiValuesGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [],
+                    "responses": {"200": {"description": "Success"}}
+                },
+                "post": {
+                    "tags": ["Values"],
+                    "operationId": "ApiValuesPost",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{"name": "value", "in": "body", "required": false, "schema": {"type": "string"}}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/api/Values/{id}": {
+                "get": {
+                    "tags": ["Values"],
+                    "operationId": "ApiValuesByIdGet",
+                    "consumes": [],
+                    "produces": ["text/plain", "application/json", "text/json"],
+                    "parameters": [{"name": "id", "in": "path", "required": true, "type": "string"}],
+                    "responses": {"200": {"description": "Success", "schema": {"type": "string"}}}
+                },
+                "put": {
+                    "tags": ["Values"],
+                    "operationId": "ApiValuesByIdPut",
+                    "consumes": ["application/json-patch+json", "application/json", "text/json", "application/*+json"],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }, {"name": "value", "in": "body", "required": false, "schema": {"type": "string"}}],
+                    "responses": {"200": {"description": "Success"}}
+                },
+                "delete": {
+                    "tags": ["Values"],
+                    "operationId": "ApiValuesByIdDelete",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/Token/WxAccesstoken": {
+                "get": {
+                    "tags": ["wx"],
+                    "operationId": "TokenWxAccesstokenGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{"name": "ticket", "in": "query", "required": false, "type": "string"}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/Token/JsapiTicket": {
+                "get": {
+                    "tags": ["wx"],
+                    "operationId": "TokenJsapiTicketGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{"name": "ticket", "in": "query", "required": false, "type": "string"}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            },
+            "/Token/wx_config": {
+                "get": {
+                    "tags": ["wx"],
+                    "operationId": "TokenWx_configGet",
+                    "consumes": [],
+                    "produces": [],
+                    "parameters": [{
+                        "name": "ticket",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    }, {"name": "url", "in": "query", "required": false, "type": "string"}],
+                    "responses": {"200": {"description": "Success"}}
+                }
+            }
+        },
+        "definitions": {
+            "dbKeyValue": {
+                "type": "object",
+                "properties": {"Tkey": {"type": "string"}, "Tvalue": {"type": "object"}}
+            },
+            "Operation": {
+                "type": "object",
+                "properties": {
+                    "value": {"type": "object"},
+                    "path": {"type": "string"},
+                    "op": {"type": "string"},
+                    "from": {"type": "string"}
+                }
+            },
+            "BdsInfoIn": {
+                "required": ["IMEI", "BDS_MODE", "WAREHOUSE_IN_TIME", "BDS_IN_PRICE"],
+                "type": "object",
+                "properties": {
+                    "IMEI": {"maxLength": 15, "minLength": 15, "type": "string"},
+                    "BDS_MODE": {"format": "int32", "maximum": 99, "minimum": 0, "type": "integer"},
+                    "WAREHOUSE_IN_TIME": {"format": "date-time", "type": "string"},
+                    "BDS_IN_PRICE": {"format": "double", "minimum": 0, "type": "number"},
+                    "MEMO": {"maxLength": 100, "minLength": 0, "type": "string"},
+                    "ICCID": {"maxLength": 20, "minLength": 0, "type": "string"}
+                }
+            },
+            "BdsInfoRefer": {
+                "required": ["IMEI"],
+                "type": "object",
+                "properties": {
+                    "IMEI": {"maxLength": 15, "minLength": 15, "type": "string"},
+                    "ICCID": {"maxLength": 20, "minLength": 0, "type": "string"},
+                    "MEMO": {"maxLength": 100, "minLength": 0, "type": "string"},
+                    "BDS_STATUS": {"format": "int32", "maximum": 2, "minimum": 0, "type": "integer"}
+                }
+            },
+            "BdsToCar": {
+                "required": ["CARIDS", "IMEIS"],
+                "type": "object",
+                "properties": {"CARIDS": {"type": "string"}, "IMEIS": {"type": "string"}}
+            },
+            "CmdInfo": {
+                "required": ["AREA_CODE", "LOG_DRPT"],
+                "type": "object",
+                "properties": {
+                    "AREA_CODE": {"maxLength": 6, "minLength": 0, "type": "string"},
+                    "ITEM_NAME": {"maxLength": 15, "minLength": 0, "type": "string"},
+                    "ITEM_ID": {"format": "double", "type": "number"},
+                    "LOG_DRPT": {"maxLength": 100, "minLength": 0, "type": "string"}
+                }
+            },
+            "PassengerEval": {
+                "type": "object",
+                "properties": {
+                    "PASSENGER_SCORE": {"format": "double", "maximum": 5, "minimum": 0, "type": "number"},
+                    "PASSENGER_EVAL": {"maxLength": 200, "minLength": 0, "type": "string"}
+                }
+            },
+            "DriverEval": {
+                "type": "object",
+                "properties": {
+                    "DRIVER_SCORE": {"format": "double", "maximum": 5, "minimum": 0, "type": "number"},
+                    "DRIVER_EVAL": {"maxLength": 200, "minLength": 0, "type": "string"}
+                }
+            },
+            "CarEval": {
+                "type": "object",
+                "properties": {
+                    "CAR_SCORE": {"format": "double", "maximum": 5, "minimum": 0, "type": "number"},
+                    "CAR_EVAL": {"maxLength": 200, "minLength": 0, "type": "string"}
+                }
+            },
+            "CarBook": {
+                "required": ["PASSENGER_ID", "BOOK_BEGIN_TIME", "TRIP_REASON", "TRIP_END_ADDR", "BOOK_LEVEL", "SELF_DRIVING"],
+                "type": "object",
+                "properties": {
+                    "PASSENGER_ID": {"format": "double", "type": "number"},
+                    "DEPT_USE_FLG": {"format": "float", "maximum": 1, "minimum": 0, "type": "number"},
+                    "BOOK_BEGIN_TIME": {"format": "date-time", "type": "string"},
+                    "BOOK_END_TIME": {"format": "date-time", "type": "string"},
+                    "TRIP_REASON": {"maxLength": 100, "minLength": 0, "type": "string"},
+                    "TRIP_BEGIN_ADDR": {"maxLength": 100, "minLength": 0, "type": "string"},
+                    "TRIP_END_ADDR": {"maxLength": 100, "minLength": 0, "type": "string"},
+                    "DRIVER_ID": {"format": "double", "type": "number"},
+                    "DRIVER_NAME": {"maxLength": 10, "minLength": 0, "type": "string"},
+                    "CAR_ID": {"format": "double", "type": "number"},
+                    "CAR_NUM": {"maxLength": 10, "minLength": 0, "type": "string"},
+                    "BOOK_LEVEL": {"format": "float", "maximum": 1, "minimum": 0, "type": "number"},
+                    "MEMO": {"maxLength": 100, "minLength": 0, "type": "string"},
+                    "BILL_MODE": {"format": "double", "maximum": 999, "minimum": 0, "type": "number"},
+                    "BILL_RATE": {"format": "double", "maximum": 99999, "minimum": 0, "type": "number"},
+                    "CAR_COUNT": {"format": "double", "maximum": 999, "minimum": 1, "type": "number"},
+                    "SELF_DRIVING": {"maxLength": 1, "minLength": 0, "type": "string"}
+                }
+            },
+            "CarBookLater": {
+                "required": ["PASSENGER_ID", "PASSENGER_NAME", "DEPT_USE_FLG", "TRIP_REASON", "TRIP_BEGIN_TIME", "TRIP_END_TIME", "TRIP_END_ADDR", "SELF_DRIVING", "CAR_ID", "BILL_MODE"],
+                "type": "object",
+                "properties": {
+                    "PASSENGER_ID": {"format": "double", "type": "number"},
+                    "PASSENGER_NAME": {"maxLength": 10, "minLength": 0, "type": "string"},
+                    "DEPT_USE_FLG": {"format": "float", "maximum": 1, "minimum": 0, "type": "number"},
+                    "TRIP_REASON": {"maxLength": 100, "minLength": 0, "type": "string"},
+                    "TRIP_BEGIN_TIME": {"format": "date-time", "type": "string"},
+                    "TRIP_END_TIME": {"format": "date-time", "type": "string"},
+                    "TRIP_BEGIN_ADDR": {"maxLength": 100, "minLength": 0, "type": "string"},
+                    "TRIP_END_ADDR": {"maxLength": 100, "minLength": 0, "type": "string"},
+                    "DRIVER_ID": {"format": "double", "type": "number"},
+                    "DRIVER_NAME": {"maxLength": 10, "minLength": 0, "type": "string"},
+                    "SELF_DRIVING": {"maxLength": 1, "minLength": 0, "type": "string"},
+                    "CAR_ID": {"format": "double", "type": "number"},
+                    "BILL_MODE": {"format": "double", "maximum": 999, "minimum": 0, "type": "number"},
+                    "BILL_RATE": {"format": "double", "maximum": 99999, "minimum": 0, "type": "number"},
+                    "ODOMETER_BEGIN_VALUE": {"format": "double", "minimum": 0, "type": "number"},
+                    "ODOMETER_END_VALUE": {"format": "double", "minimum": 0, "type": "number"},
+                    "CAR_END_DRPT": {"maxLength": 200, "minLength": 0, "type": "string"},
+                    "MEMO": {"maxLength": 100, "minLength": 0, "type": "string"}
+                }
+            },
+            "BookAudit": {
+                "required": ["BOOK_ID", "AUDIT_STATUS"],
+                "type": "object",
+                "properties": {
+                    "BOOK_ID": {"format": "double", "type": "number"},
+                    "AUDIT_STATUS": {"format": "int32", "maximum": 999, "minimum": 0, "type": "integer"},
+                    "AUDIT_OPINION": {"maxLength": 100, "minLength": 0, "type": "string"}
+                }
+            },
+            "BookDispat": {
+                "required": ["CAR_ID", "SELF_DRIVING", "BILL_MODE"],
+                "type": "object",
+                "properties": {
+                    "CAR_ID": {"format": "double", "type": "number"},
+                    "SELF_DRIVING": {"maxLength": 1, "minLength": 0, "type": "string"},
+                    "BILL_MODE": {"format": "int32", "type": "integer"},
+                    "BILL_RATE": {"format": "double", "type": "number"},
+                    "DRIVER_ID": {"format": "double", "type": "number"}
+                }
+            },
+            "TripBegin": {
+                "type": "object",
+                "properties": {
+                    "ODOMETER_BEGIN_VALUE": {"format": "double", "minimum": 0, "type": "number"},
+                    "CAR_BEGIN_DRPT": {"maxLength": 200, "minLength": 0, "type": "string"},
+                    "DRIVER_MEMO": {"maxLength": 200, "minLength": 0, "type": "string"}
+                }
+            },
+            "TripEnd": {
+                "type": "object",
+                "properties": {
+                    "ODOMETER_END_VALUE": {"format": "double", "minimum": 0, "type": "number"},
+                    "DRIVER_MEMO": {"maxLength": 200, "minLength": 0, "type": "string"}
+                }
+            },
+            "BookEnd": {
+                "type": "object",
+                "properties": {
+                    "ODOMETER_END_VALUE": {"format": "double", "minimum": 0, "type": "number"},
+                    "CAR_END_DRPT": {"maxLength": 200, "minLength": 0, "type": "string"},
+                    "DRIVER_MEMO": {"maxLength": 200, "minLength": 0, "type": "string"}
+                }
+            },
+            "CarCost": {
+                "required": ["COST_TYPE", "COST_DRPT", "COST_TIME", "COST_AMT", "SYS_SORT"],
+                "type": "object",
+                "properties": {
+                    "CAR_ID": {"format": "double", "type": "number"},
+                    "COST_TYPE": {"maxLength": 10, "minLength": 0, "type": "string"},
+                    "COST_DRPT": {"maxLength": 20, "minLength": 0, "type": "string"},
+                    "COST_MEMO": {"maxLength": 100, "minLength": 0, "type": "string"},
+                    "COST_TIME": {"format": "date-time", "type": "string"},
+                    "COST_AMT": {"format": "double", "maximum": 99999999, "minimum": -99999999, "type": "number"},
+                    "COST_VALUE": {"format": "double", "maximum": 99999999, "minimum": -99999999, "type": "number"},
+                    "CARD_ID": {"format": "double", "type": "number"},
+                    "BILL_NUM": {"maxLength": 50, "minLength": 0, "type": "string"},
+                    "BEGIN_TIME": {"format": "date-time", "type": "string"},
+                    "END_TIME": {"format": "date-time", "type": "string"},
+                    "SYS_SORT": {"maxLength": 10, "minLength": 0, "type": "string"},
+                    "BOOK_ID": {"format": "double", "type": "number"}
+                }
+            },
+            "CarInfo": {
+                "required": ["CAR_NUM", "CAR_DRPT", "AREA_CODE", "CAR_IMG"],
+                "type": "object",
+                "properties": {
+                    "CAR_NUM": {"maxLength": 20, "minLength": 0, "type": "string"},
+                    "CAR_DRPT": {"maxLength": 50, "minLength": 0, "type": "string"},
+                    "AREA_CODE": {"maxLength": 6, "minLength": 0, "type": "string"},
+                    "CAR_TYPE": {"format": "double", "maximum": 5, "minimum": 0, "type": "number"},
+                    "CAR_STATUS": {"format": "double", "maximum": 999, "minimum": 0, "type": "number"},
+                    "OIL_WEAR": {"format": "double", "type": "number"},
+                    "DRIVER_ID": {"format": "double", "type": "number"},
+                    "PRIVATE_CAR_FLG": {"format": "double", "maximum": 1, "minimum": 0, "type": "number"},
+                    "DRIVER_NAME": {"maxLength": 10, "minLength": 0, "type": "string"},
+                    "KM_PRICE": {"format": "double", "type": "number"},
+                    "PURCHASE_DATE": {"format": "date-time", "type": "string"},
+                    "VIN_NO": {"type": "string"},
+                    "ENGINE_NO": {"type": "string"},
+                    "MEMO": {"type": "string"},
+                    "PRIVATE_CAR_PRICE": {"format": "double", "type": "number"},
+                    "PRIVATE_CAR_STAFF_ID": {"format": "double", "type": "number"},
+                    "CAR_IMG": {"maxLength": 20, "minLength": 0, "type": "string"},
+                    "PUBLIC_LEVEL": {"format": "double", "maximum": 2, "minimum": 0, "type": "number"},
+                    "SPEED_LIMIT": {"format": "double", "maximum": 3, "minimum": 0, "type": "number"},
+                    "OTH_COMP_CODE": {"maxLength": 32, "minLength": 0, "type": "string"},
+                    "ENGINE_L": {"maxLength": 20, "minLength": 0, "type": "string"},
+                    "ODOMETER_VALUE": {"format": "double", "minimum": 0, "type": "number"},
+                    "USE_PROPERTY": {"maxLength": 20, "minLength": 0, "type": "string"},
+                    "INSURANCE_END_DATE": {"format": "date-time", "type": "string"},
+                    "CHECK_END_DATE": {"format": "date-time", "type": "string"},
+                    "KEEP_END_DATE": {"format": "date-time", "type": "string"},
+                    "OIL_CARD_ID": {"format": "double", "type": "number"}
+                }
+            },
+            "CarInfo_bulk": {
+                "required": ["AREA_CODE", "CAR_NUM", "CAR_DRPT"],
+                "type": "object",
+                "properties": {
+                    "AREA_CODE": {"maxLength": 6, "minLength": 0, "type": "string"},
+                    "CAR_NUM": {"maxLength": 20, "minLength": 0, "type": "string"},
+                    "CAR_DRPT": {"maxLength": 20, "minLength": 0, "type": "string"},
+                    "CAR_TYPE": {"format": "double", "maximum": 5, "minimum": 0, "type": "number"},
+                    "OIL_WEAR": {"format": "double", "minimum": 0, "type": "number"},
+                    "KM_PRICE": {"format": "double", "minimum": 0, "type": "number"},
+                    "VIN_NO": {"maxLength": 20, "minLength": 0, "type": "string"},
+                    "ENGINE_NO": {"maxLength": 20, "minLength": 0, "type": "string"},
+                    "MEMO": {"maxLength": 200, "minLength": 0, "type": "string"},
+                    "CAR_IMG": {"maxLength": 20, "minLength": 0, "type": "string"},
+                    "SPEED_LIMIT": {"format": "double", "maximum": 999, "minimum": 0, "type": "number"}
+                }
+            },
+            "CompInfo": {
+                "required": ["COMP_CODE", "COMP_NAME", "SYS_TITLE", "BEGIN_DATE", "END_DATE", "COMP_COOR"],
+                "type": "object",
+                "properties": {
+                    "COMP_CODE": {"maxLength": 5, "minLength": 3, "type": "string"},
+                    "COMP_NAME": {"maxLength": 50, "minLength": 3, "type": "string"},
+                    "SYS_TITLE": {"maxLength": 20, "minLength": 3, "type": "string"},
+                    "BEGIN_DATE": {"format": "date-time", "type": "string"},
+                    "END_DATE": {"format": "date-time", "type": "string"},
+                    "COMP_COOR": {"maxLength": 25, "minLength": 0, "type": "string"},
+                    "MEMO": {"maxLength": 200, "minLength": 0, "type": "string"}
+                }
+            },
+            "FenceInfo": {
+                "required": ["FENCE_NAME", "FENCE_VALUE", "VALID_FLG"],
+                "type": "object",
+                "properties": {
+                    "FENCE_NAME": {"maxLength": 50, "minLength": 0, "type": "string"},
+                    "FENCE_VALUE": {"maxLength": 200, "minLength": 0, "type": "string"},
+                    "VALID_FLG": {"maxLength": 1, "minLength": 0, "type": "string"},
+                    "MEMO": {"maxLength": 100, "minLength": 0, "type": "string"}
+                }
+            },
+            "OilCard": {
+                "required": ["CARD_NUM"],
+                "type": "object",
+                "properties": {
+                    "CARD_NUM": {"maxLength": 50, "minLength": 0, "type": "string"},
+                    "CARD_DRPT": {"maxLength": 20, "minLength": 0, "type": "string"},
+                    "MEMO": {"maxLength": 100, "minLength": 0, "type": "string"},
+                    "STAFF_ID": {"format": "double", "type": "number"},
+                    "STAFF_NAME": {"maxLength": 10, "minLength": 0, "type": "string"}
+                }
+            },
+            "OilCard_Bulk": {
+                "required": ["AREA_CODE", "CARD_NUM"],
+                "type": "object",
+                "properties": {
+                    "AREA_CODE": {"maxLength": 6, "minLength": 0, "type": "string"},
+                    "CARD_NUM": {"maxLength": 20, "minLength": 0, "type": "string"},
+                    "CARD_DRPT": {"maxLength": 20, "minLength": 0, "type": "string"},
+                    "MEMO": {"maxLength": 100, "minLength": 0, "type": "string"}
+                }
+            },
+            "OilCardTran": {
+                "required": ["TRAN_TIME", "CARD_ID", "CARD_CODE", "CAR_ID", "CAR_NUM", "TRAN_AMT", "TRAN_LITER"],
+                "type": "object",
+                "properties": {
+                    "TRAN_TIME": {"format": "date-time", "type": "string"},
+                    "CARD_ID": {"format": "double", "type": "number"},
+                    "CARD_CODE": {"maxLength": 20, "minLength": 0, "type": "string"},
+                    "CAR_ID": {"format": "double", "type": "number"},
+                    "CAR_NUM": {"maxLength": 20, "minLength": 0, "type": "string"},
+                    "STAFF_ID": {"format": "double", "type": "number"},
+                    "STAFF_NAME": {"maxLength": 10, "minLength": 0, "type": "string"},
+                    "TRAN_ADDR": {"maxLength": 20, "minLength": 0, "type": "string"},
+                    "TRAN_AMT": {"format": "double", "maximum": 9999, "minimum": 0, "type": "number"},
+                    "TRAN_LITER": {"format": "double", "maximum": 999, "minimum": 0, "type": "number"},
+                    "MEMO": {"maxLength": 50, "minLength": 0, "type": "string"},
+                    "OIL_TYPE": {"maxLength": 20, "minLength": 0, "type": "string"},
+                    "CARD_BAL": {"format": "double", "maxLength": 50, "minLength": 0, "type": "number"},
+                    "AREA_CODE": {"maxLength": 6, "minLength": 0, "type": "string"}
+                }
+            },
+            "OilCardTran2": {
+                "required": ["AREA_CODE", "TRAN_TIME", "CARD_ID", "CARD_CODE", "CAR_ID", "CAR_NUM", "TRAN_AMT", "TRAN_LITER"],
+                "type": "object",
+                "properties": {
+                    "AREA_CODE": {"maxLength": 6, "minLength": 0, "type": "string"},
+                    "TRAN_TIME": {"format": "date-time", "type": "string"},
+                    "CARD_ID": {"format": "double", "type": "number"},
+                    "CARD_CODE": {"maxLength": 20, "minLength": 0, "type": "string"},
+                    "CAR_ID": {"format": "double", "type": "number"},
+                    "CAR_NUM": {"maxLength": 20, "minLength": 0, "type": "string"},
+                    "TRAN_AMT": {"format": "double", "maximum": 9999, "minimum": 0, "type": "number"},
+                    "TRAN_LITER": {"format": "double", "maximum": 999, "minimum": 0, "type": "number"},
+                    "TRAN_ADDR": {"maxLength": 20, "minLength": 0, "type": "string"},
+                    "MEMO": {"maxLength": 50, "minLength": 0, "type": "string"},
+                    "OIL_TYPE": {"maxLength": 20, "minLength": 0, "type": "string"},
+                    "CARD_BAL": {"format": "double", "maximum": 99999, "minimum": 0, "type": "number"}
+                }
+            },
+            "PrivateCarBill": {
+                "required": ["STAFF_ID", "BILL_TYPE", "TRN_CODE", "TRN_DRPT", "TRN_GPS_AMT", "BILL_GPS_BAL", "BILL_ODOMETER_BAL", "TRN_TIME"],
+                "type": "object",
+                "properties": {
+                    "STAFF_ID": {"format": "double", "type": "number"},
+                    "BILL_TYPE": {"format": "int32", "type": "integer"},
+                    "TRN_CODE": {"maxLength": 3, "minLength": 0, "type": "string"},
+                    "TRN_DRPT": {"maxLength": 50, "minLength": 0, "type": "string"},
+                    "BILL_GPS_MEMO": {"maxLength": 100, "minLength": 0, "type": "string"},
+                    "TRN_GPS_AMT": {"format": "double", "maximum": 9999, "minimum": -9999, "type": "number"},
+                    "BILL_GPS_BAL": {"format": "double", "maximum": 9999, "minimum": -9999, "type": "number"},
+                    "BILL_ODOMETER_BAL": {"format": "double", "maximum": 9999, "minimum": -9999, "type": "number"},
+                    "TRN_TIME": {"format": "date-time", "type": "string"},
+                    "BOOK_ID": {"format": "double", "type": "number"},
+                    "CAR_ID": {"format": "double", "type": "number"}
+                }
+            },
+            "QueryScope": {
+                "required": ["QUERY_DRPT", "QUERY_VALUE", "BEGIN_DATE", "END_DATE", "QUERY_CODE"],
+                "type": "object",
+                "properties": {
+                    "QUERY_DRPT": {"maxLength": 100, "minLength": 0, "type": "string"},
+                    "QUERY_VALUE": {"maxLength": 2000, "minLength": 0, "type": "string"},
+                    "SHARE_FLG": {"format": "float", "maximum": 1, "minimum": 0, "type": "number"},
+                    "BEGIN_DATE": {"format": "date-time", "type": "string"},
+                    "END_DATE": {"format": "date-time", "type": "string"},
+                    "CENTER_COOR": {"maxLength": 200, "minLength": 0, "type": "string"},
+                    "TO_PERSONS": {"maxLength": 2000, "minLength": 0, "type": "string"},
+                    "QUERY_CODE": {"maxLength": 20, "minLength": 0, "type": "string"}
+                }
+            },
+            "StaffBill": {
+                "required": ["STAFF_ID", "BILL_TYPE", "TRN_CODE", "TRN_DRPT", "TRN_GPS_AMT", "TRN_TIME"],
+                "type": "object",
+                "properties": {
+                    "STAFF_ID": {"format": "double", "type": "number"},
+                    "BILL_TYPE": {"format": "int32", "type": "integer"},
+                    "TRN_CODE": {"maxLength": 3, "minLength": 0, "type": "string"},
+                    "TRN_DRPT": {"maxLength": 50, "minLength": 0, "type": "string"},
+                    "BILL_GPS_MEMO": {"maxLength": 100, "minLength": 0, "type": "string"},
+                    "TRN_GPS_AMT": {"format": "double", "maximum": 9999, "minimum": -9999, "type": "number"},
+                    "TRN_TIME": {"format": "date-time", "type": "string"}
+                }
+            },
+            "OnDutyInfo": {
+                "required": ["ON_DUTY_ADDRESS"],
+                "type": "object",
+                "properties": {
+                    "ON_DUTY_ADDRESS": {"maxLength": 200, "minLength": 0, "type": "string"},
+                    "ON_DUTY_MEMO": {"maxLength": 100, "minLength": 0, "type": "string"}
+                }
+            },
+            "OffDutyInfo": {
+                "required": ["OFF_DUTY_ADDRESS"],
+                "type": "object",
+                "properties": {
+                    "OFF_DUTY_ADDRESS": {"maxLength": 200, "minLength": 0, "type": "string"},
+                    "OFF_DUTY_MEMO": {"maxLength": 100, "minLength": 0, "type": "string"}
+                }
+            },
+            "StaffInfo": {
+                "required": ["STAFF_NAME", "DEPT_CODE", "AREA_CODE", "ROLE_CODE"],
+                "type": "object",
+                "properties": {
+                    "STAFF_NAME": {"maxLength": 10, "minLength": 0, "type": "string"},
+                    "DEPT_CODE": {"maxLength": 6, "minLength": 0, "type": "string"},
+                    "AREA_CODE": {"maxLength": 6, "minLength": 0, "type": "string"},
+                    "MOBILE_NUM": {"maxLength": 11, "minLength": 0, "type": "string"},
+                    "EMAIL": {"maxLength": 40, "minLength": 0, "type": "string"},
+                    "WX_OPENID": {"maxLength": 28, "minLength": 0, "type": "string"},
+                    "ROLE_CODE": {"maxLength": 6, "minLength": 0, "type": "string"},
+                    "BLOCK_LOGIN_FLG": {"format": "double", "maximum": 1, "minimum": 0, "type": "number"},
+                    "MEMO": {"maxLength": 100, "minLength": 0, "type": "string"},
+                    "TWO_VERIFY": {"format": "double", "maximum": 1, "minimum": 0, "type": "number"},
+                    "QUERY_SCOPE_ID": {"format": "double", "type": "number"}
+                }
+            },
+            "StaffInfoBulk": {
+                "required": ["STAFF_NAME", "DEPT_CODE", "AREA_CODE", "ROLE_CODE"],
+                "type": "object",
+                "properties": {
+                    "STAFF_NAME": {"maxLength": 10, "minLength": 0, "type": "string"},
+                    "DEPT_CODE": {"maxLength": 6, "minLength": 0, "type": "string"},
+                    "AREA_CODE": {"maxLength": 6, "minLength": 0, "type": "string"},
+                    "MOBILE_NUM": {"maxLength": 11, "minLength": 0, "type": "string"},
+                    "EMAIL": {"maxLength": 40, "minLength": 0, "type": "string"},
+                    "ROLE_CODE": {"maxLength": 6, "minLength": 0, "type": "string"},
+                    "MEMO": {"maxLength": 100, "minLength": 0, "type": "string"},
+                    "TWO_VERIFY": {"format": "double", "maximum": 1, "minimum": 0, "type": "number"}
+                }
+            },
+            "SysPara": {
+                "required": ["PARA_TYPE", "PARA_CODE", "PARA_DRPT", "PARENT_CODE"],
+                "type": "object",
+                "properties": {
+                    "PARA_TYPE": {"maxLength": 4, "minLength": 0, "type": "string"},
+                    "PARA_CODE": {"maxLength": 6, "minLength": 0, "type": "string"},
+                    "PARA_DRPT": {"maxLength": 100, "minLength": 0, "type": "string"},
+                    "PARENT_CODE": {"maxLength": 6, "minLength": 0, "type": "string"},
+                    "VALID_FLG": {"format": "double", "maximum": 1, "minimum": 0, "type": "number"},
+                    "MEMO": {"maxLength": 3000, "minLength": 0, "type": "string"}
+                }
+            },
+            "userInfo": {
+                "required": ["uid", "pwd"],
+                "type": "object",
+                "properties": {
+                    "uid": {"maxLength": 30, "minLength": 5, "type": "string"},
+                    "pwd": {"type": "string"},
+                    "pc_id": {"type": "string"},
+                    "pc_guid": {"type": "string"}
+                }
+            },
+            "TrafficTicket": {
+                "required": ["CAR_ID", "CAR_NUM", "TICKET_TIME", "TICKET_ADDR"],
+                "type": "object",
+                "properties": {
+                    "CAR_ID": {"format": "double", "type": "number"},
+                    "CAR_NUM": {"maxLength": 20, "minLength": 0, "type": "string"},
+                    "DRIVER_ID": {"format": "double", "type": "number"},
+                    "DRIVER_NAME": {"type": "string"},
+                    "TICKET_TIME": {"format": "date-time", "type": "string"},
+                    "TICKET_ADDR": {"maxLength": 50, "minLength": 0, "type": "string"},
+                    "TICKET_AMT": {"format": "int32", "maximum": 9999, "minimum": 0, "type": "integer"},
+                    "TICKET_SCORE": {"format": "int32", "maximum": 12, "minimum": 0, "type": "integer"},
+                    "TICKET_DRPT": {"maxLength": 200, "minLength": 0, "type": "string"},
+                    "MEMO": {"maxLength": 200, "minLength": 0, "type": "string"},
+                    "DONE_FLG": {"format": "double", "maximum": 1, "minimum": 0, "type": "number"}
+                }
+            }
+        }
+    };
+
+    Object.keys(paths).forEach(path => {
+        let methods = paths[path];
+        Object.keys(methods).forEach(method => {
+            let a = {};
+            methods[method]["parameters"].forEach(function (parameter) {
+                a[parameter["in"]] = true;
+            });
+            make(path, method, a);
+        });
+    });
+
+    function make(path, method, params) {
+        let str = `
+            export function ${makeMethodName(method, path)}(${makeParams(params)}){
+                ${makeMethodContent(path, method, params)}
+            }
+        `;
+        let s = str.replace(/[\s\S]{2,}/g, " ");
+        console.log(s);
+    }
+
+    // 生成参数列表
+    function makeParams(params) {
+        let arr = [];
+        if (params["path"]) {
+            arr.push("path");
+        }
+        if (params["query"]) {
+            arr.push("query");
+        }
+        if (params["body"]) {
+            arr.push("body");
+        }
+        return arr.join(",");
+    }
+
+    function makeMethodName(method, path) {
+        // id转换
+        path = path.replace(/{[\s\S]*}$/g, "ById");
+        // 去除 /
+        let splitNode = path.split("/");
+        splitNode.forEach(str => {
+            // 首字母大写
+            str.replace(/^[a-z]/g, firstStr => firstStr.toUpperCase());
+        });
+        path = splitNode.join("");
+        return method + path;
+    }
+
+    function makeMethodContent(path, method, params) {
+        let str = `
+           return axios({
+                method:"${method}",
+                url:${/{[\s\S]*}$/g.test(path) ? `"${path.replace(/{[\s\S]*}$/g, "")}"+path,` : `"${path}",`}
+                ${params.query ? `` : `params:query,`}
+                ${params.body ? `` : `data:body,`}
+            });
+        `;
+        return str;
+    }
+</script>
+</body>
+</html>

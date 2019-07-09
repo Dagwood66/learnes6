@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 通过命名约定,但是私有方法还是可以调用
+    // 模块外声明+模块
+    // Symbol+模块
+
+    // 方法1
+    //    class Widget {
+    //        foo(baz) {
+    //            debugger
+    //            this._foo(baz);
+    //        }
+    //
+    //        _foo(baz) {
+    //            debugger
+    //            return this.snaf = baz;
+    //        }
+    //    }
+    //    let widget = new Widget();
+    //    widget.foo();
+    //    widget._foo();
+
+    // 方法2
+    //    class Widget {
+    //        foo(baz) {
+    //            _foo.call(this, baz);
+    //        }
+    //    }
+    //
+    //    function _foo(baz) {
+    //        return this.snaf = baz;
+    //    }
+    //
+    //    let widget = new Widget();
+    //    widget.foo();
+    //    widget._foo();
+
+    // 方法3
+    const bar = Symbol("bar");
+    const snaf = Symbol("snaf");
+
+    class MyClass {
+        foo(baz) {
+            this[bar](baz);
+        }
+
+        [bar](baz) {
+            return this[snaf] = baz;
+        }
+    }
+
+    let myClass = new MyClass();
+    myClass.foo();
+    myClass[bar]();
+
+</script>
+</body>
+</html>

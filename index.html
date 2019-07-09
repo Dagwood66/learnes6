@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="https://unpkg.com/dayjs"></script>
+<script>
+    // 老
+    let sum = 8 * 22;
+    // 新
+    //    sum = (5000 / parseInt(8000 / 22 / 8));
+
+    const date1 = dayjs('2019-05-07');
+    const date2 = dayjs(new Date());
+    let days = date2.diff(date1, 'day');
+    console.log("相差天数:" + days);
+    let week = parseInt(days / 7);
+    let noWorkingDay = week * 2;
+    let workingDay = days - noWorkingDay;
+    console.log(sum - (noWorkingDay * 8 + workingDay * 2));
+</script>
+</body>
+</html>

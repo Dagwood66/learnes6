@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // for-in / 获取key数组
+    console.time("init");
+    let obj = (function () {
+        let newVar = {};
+        let length = 100;
+        for (let i = 0; i < length; i++) {
+            newVar[i] = "v" + i;
+        }
+        return newVar;
+    })();
+    console.timeEnd("init");
+
+    // for-in
+    console.time("for-in");
+    for (let key in obj) {
+        obj[key];
+    }
+    console.timeEnd("for-in");
+
+</script>
+</body>
+</html>

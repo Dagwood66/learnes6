@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function foo(a) {
+        this.a = a;
+    }
+
+    let bar = new foo(2);
+    console.log(bar.a);
+</script>
+</body>
+</html>

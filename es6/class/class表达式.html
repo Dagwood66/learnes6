@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // TODO class表达式深入
+    const MyClass = class Me {
+        getClassName() {
+            return Me.name;
+        }
+    };
+
+    let inst = new MyClass();
+    console.log(inst.getClassName());
+    console.log(Me);
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*
+    * 属性简洁写法
+    *   允许在对象之中，直接写变量
+    *       属性名为变量名,属性值为变量的值
+    * 方法简洁写法
+    *   methodName(){}
+    * */
+
+    /*
+    * 属性名表达式
+    *   字面量声明对象时,允许表达式作为属性名/方法名,但表达式需要放在方括号中
+    *   属性名表达式与简洁表示法，不能同时使用
+    * */
+    {
+        function add(x, ...item) {
+            console.log(...item);
+        }
+
+        add(1, 2, 3, 4)
+    }
+</script>
+</body>
+</html>
