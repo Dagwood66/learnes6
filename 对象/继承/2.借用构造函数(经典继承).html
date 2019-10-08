@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2.借用构造函数(经典继承)</title>
+</head>
+<body>
+<script>
+    function Parent() {
+        this.names = ['kevin', 'daisy'];
+    }
+
+    function Child() {
+        Parent.call(this);
+    }
+
+    let child1 = new Child();
+    child1.names.push('yayu');
+    console.log(child1.names);
+    let child2 = new Child();
+    console.log(child2.names);
+    // 弊端1 每次创建实例都会重新创建方法
+    // 弊端2 instanceof 为 false
+    console.log(child1 instanceof Parent);
+    console.log(child1 instanceof Child);
+</script>
+</body>
+</html>

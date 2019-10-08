@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用括号的子字符串匹配.html</title>
+</head>
+<body>
+<script>
+    (function () {
+        var re = /(\w+)\s(\w+)/;
+        var str = "John Smith";
+        var newstr = str.replace(re, "$2, $1");
+        console.log(newstr);
+    }());
+</script>
+</body>
+</html>

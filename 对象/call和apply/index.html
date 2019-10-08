@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>call和apply</title>
+</head>
+<body>
+<script>
+    (function () {
+        console.log("---1. 改变this指向-----------------------------");
+
+        window.name = "window";
+        let obj = {
+            name: "obj"
+        };
+
+        function func() {
+            console.log(this.name);
+        }
+
+        func();
+        func.call(obj);
+    })();
+    (function () {
+        console.log("---2. 借用别的对象的方法-----------------------------");
+    })();
+</script>
+</body>
+</html>
