@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 按值传递
+    (function () {
+        let value = 1;
+
+        function foo(v) {
+            v = 2;
+            console.log(v);
+        }
+
+        foo(value);
+        console.log(value);
+    }());
+
+    (function () {
+        let obj = {
+            value: 1
+        };
+
+        function foo(o) {
+            o.value = 2;
+            console.log(o);
+        }
+
+        foo(obj);
+        console.log(obj);
+    }());
+    // 共享传递是传递对象的引用的副本
+    (function () {
+        let obj = {
+            value: 1
+        };
+
+        function foo(o) {
+            o = 2;
+            console.log(o);
+        }
+
+        foo(obj);
+
+        console.log(obj.value);
+    }());
+</script>
+</body>
+</html>

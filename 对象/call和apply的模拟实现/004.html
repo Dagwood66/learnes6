@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // call 模拟实现-返回值
+    Function.prototype.call2 = function (context) {
+        context = context || window;
+        context.fn = this;
+        var args = [];
+        for (var i = 1; i < arguments.length; i++) {
+            let argument = arguments[i];
+            if (typeof argument === "string") {
+                argument = "\"" + argument + "\"";
+            }
+            args.push(argument);
+        }
+        let result = eval("context.fn(" + args.join(",") + ");");
+        delete context.fn;
+        return result;
+    };
+
+    var foo = {
+        value: 1
+    };
+
+    function bar(name, age) {
+        console.log(name);
+        console.log(age);
+        console.log(this.value);
+        return {
+            name: name,
+            age: age,
+            value: this.value,
+        }
+    }
+
+    console.log(
+        bar.call2(foo, "dafsd", 18)
+    );
+</script>
+</body>
+</html>
