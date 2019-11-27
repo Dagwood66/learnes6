@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    (function () {
+        let arr = new Array();
+        console.log(arr);
+    })();
+
+    (function () {
+        let arr = [];
+        console.log(arr);
+    })();
+
+    (function () {
+        let arr = new Array(5);
+        console.log(arr);
+        // 有循环数据
+        for (let i = 0; i < arr.length; i++) {
+            console.log(arr[i]);
+        }
+        // 无循环数据
+        arr.forEach(item => {
+            console.log(item);
+        })
+    })();
+
+    (function () {
+        try {
+            // 最大长度
+            let arr = new Array(4294967295);
+        } catch (e) {
+            console.log(e)
+        }
+    })();
+
+    (function () {
+        let colors = ["red", "blue", "green"]; // 创建一个包含 3 个字符串的数组
+        console.log(colors.toString()); // 以逗号分割
+        console.log(colors.valueOf()); // 以数组输出
+        console.log(colors);
+    })();
+
+    (function () {
+        // 栈结构
+        //      push 从末尾添加
+        //      pop 从末尾移除
+        let colors = ["red", "blue"];
+        colors.push("brown"); // 添加另一项
+        colors[3] = "black"; // 添加一项
+        console.log(colors.length);
+        colors.pop();
+        console.log(colors.length);
+    })();
+
+    (function () {
+        // 队列结构
+        //      push 从末尾添加
+        //      shift 从开头移除
+        let colors = ["red", "blue"];
+        colors.push("brown"); // 添加另一项
+        colors[3] = "black"; // 添加一项
+        console.log(colors);
+        colors.shift();
+        console.log(colors);
+    })();
+
+    (function () {
+        let arr = [0, 4, 2, 3, 5];
+        let sort = arr.sort(function (item1, item2) {
+            // 升序
+            // 大于0-交换位置
+            // 等于0-交换或不变位置
+            // 小于0-不变位置
+            return item1 - item2;
+        });
+        console.log(sort);
+    })();
+
+    (function () {
+        // concat 返回新的数组
+        console.log("---concat---");
+        let arr = [];
+        console.log(arr.concat());
+        console.log(arr.concat([1, 2]));
+        console.log(arr.concat(1, 2));
+        console.log(arr.concat([1], [2], [1, 2]));
+    })();
+
+    (function () {
+        // slice(n) 从起始位置截取全部
+        // slice(n,m) [n,m) 从起始位置n到末尾位置m(不包含m)
+        // 如果参数为负数，则参数值加上数组的长度
+        let colors = ["red", "green", "blue", "yellow", "purple"];
+        console.log("---slice---");
+        console.log(colors.slice());
+        console.log(colors.slice(0));
+        console.log(colors.slice(0, 3));
+        // 最后一个
+        console.log(colors.slice(colors.length - 1, colors.length));
+        // 倒数第二个
+        console.log(colors.slice(colors.length - 2, colors.length - 1));
+        console.log(colors.slice(-2, -1));
+    })();
+
+    (function () {
+        // splice
+        //  删除
+        //  插入
+        //  替换
+    })();
+</script>
+</body>
+</html>
