@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>633. 平方数之和</title>
+</head>
+<body>
+<pre>
+给定一个非负整数 c ，你要判断是否存在两个整数 a 和 b，使得 a*a + b*b = c。
+
+示例1:
+
+输入: 5
+输出: True
+解释: 1 * 1 + 2 * 2 = 5
+ 
+
+示例2:
+
+输入: 3
+输出: False
+</pre>
+<script>
+    console.log(f(0));
+
+    function f(c) {
+        let a = 0;
+        let b = 0;
+
+        while ((a * a) <= c) {
+            b = Math.sqrt((c - a * a));
+            if (Number.isInteger(b)) {
+                return true;
+            }
+            a += 1;
+        }
+        return false;
+    }
+</script>
+</body>
+</html>
