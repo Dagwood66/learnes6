@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>属性类型</title>
+</head>
+<body>
+<script>
+    // 内部属性 [[Enumerable]]
+    // 数据属性
+    //      [[Configurable]]
+    //      [[Enumerable]]
+    //      [[Writable]]
+    //      [[Value]]
+    //      使用(不指定的Configurable,Enumerable,Writable默认为false)
+    //          Object.defineProperty(obj,"key",{
+    //              configurable:false,
+    //              writable:false,
+    //              enumerable:false,
+    //              value:undefined
+    //          })
+    // 访问器属性
+    //      [[Configurable]]
+    //      [[Enumerable]]
+    //      [[Get]]
+    //      [[Set]]
+
+    (function () {
+        // "use strict";
+
+        let person = {};
+        Object.defineProperty(person, "name", {
+            writable: false,
+            value: "Nicholas"
+        });
+        console.log(person.name);
+        person.name = "Greg";
+        console.log(person.name);
+
+        Object.defineProperty(person, "age", {
+            configurable: false,
+            value: 20
+        });
+        console.log(person.age);
+        delete person.age;
+        console.log(person.age);
+
+        Object.defineProperty(person, "job", {
+            enumerable: false,
+            value: "software"
+        });
+        for (let key in person) {
+            console.log(key);
+        }
+        let ownPropertyNames = Object.getOwnPropertyNames(person);
+        console.log(ownPropertyNames);
+    })();
+    // 访问器属性
+    (function () {
+        let book = {
+            _year: 2004,
+            edition: 1
+        };
+
+        Object.defineProperty(book, "year", {
+            get() {
+                return this._year;
+            },
+            set(v) {
+                if (v > 2004) {
+                    this._year = v;
+                    this.edition += v - 2004;
+                }
+            }
+        });
+        console.log(book);
+        book.year = 2005;
+        console.log(book);
+    })();
+    // 访问器属性-兼容写法
+    (function () {
+        let book = {
+            _year: 2004,
+            edition: 1
+        };
+
+        book.__defineGetter__("year", function () {
+            return this._year;
+        });
+
+        book.__defineSetter__("year", function (v) {
+            if (v > 2004) {
+                this._year = v;
+                this.edition += v - 2004;
+            }
+        });
+
+        console.log(book);
+        book.year = 2005;
+        console.log(book);
+    })();
+</script>
+</body>
+</html>

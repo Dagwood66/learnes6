@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>6.3.3.原型模式</title>
+</head>
+<body>
+<script>
+    function Person() {
+    }
+
+    Person.prototype.name = "Nicholas";
+    Person.prototype.age = 29;
+    Person.prototype.job = "Software Engineer";
+    Person.prototype.sayName = function () {
+        alert(this.name);
+    };
+
+    let person1 = new Person();
+    let person2 = new Person();
+
+    console.log(person1.sayName === person2.sayName);
+
+    console.log(Person === Person.prototype.constructor);
+
+    console.log(Object.getPrototypeOf(person1) === Person.prototype);
+    // 属性遮罩
+    console.log(person1.name);
+    person1.name = "Test";
+    console.log(person1.name);
+    person1.name = undefined;
+    console.log(person1.name);
+    // 移除属性遮罩
+    delete person1.name;
+    console.log(person1.name);
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>6.2.2.构造函数-问题</title>
+</head>
+<body>
+<script>
+    // 问题：每个方法都要在实例上重新创建一遍
+    function Person(name, age, job) {
+        this.name = name;
+        this.age = age;
+        this.job = job;
+        this.sayName = function () {
+            console.log(this.name);
+        };
+        // 解决方式:使用全局函数
+        // 造成的问题:全局函数泛滥,无封装性
+        this.sayAge = sayAge;
+    }
+
+    function sayAge() {
+        console.log(this.age);
+    }
+
+    let person1 = new Person("Nicholas", 29, "Software Engineer");
+    let person2 = new Person("Greg", 27, "Doctor");
+
+    console.log(person1.sayName === person2.sayName);
+    console.log(person1.sayAge === person2.sayAge);
+</script>
+</body>
+</html>

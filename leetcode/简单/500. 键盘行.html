@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>500. 键盘行</title>
+</head>
+<body>
+<pre>
+给定一个单词列表，只返回可以使用在键盘同一行的字母打印出来的单词。键盘如下图所示。
+示例：
+
+输入: ["Hello", "Alaska", "Dad", "Peace"]
+输出: ["Alaska", "Dad"]
+
+注意：
+
+你可以重复使用键盘上同一字符。
+你可以假设输入的字符串将只包含字母。
+</pre>
+<script>
+    console.log(f(["Hello", "Alaska", "Dad", "Peace"]));
+
+    function f(words) {
+        let row1 = "qwertyuiop";
+        let row2 = "asdfghjkl";
+        let row3 = "zxcvbnm";
+        return words.filter(item => {
+            let arr = item.toLowerCase().split("");
+            let rowLength1 = 0;
+            let rowLength2 = 0;
+            let rowLength3 = 0;
+            for (let i = 0; i < arr.length; i++) {
+                rowLength1 += row1.indexOf(arr[i]) === -1 ? 0 : 1;
+                rowLength2 += row2.indexOf(arr[i]) === -1 ? 0 : 1;
+                rowLength3 += row3.indexOf(arr[i]) === -1 ? 0 : 1;
+            }
+            return rowLength1 === arr.length || rowLength2 === arr.length || rowLength3 === arr.length;
+        })
+    }
+</script>
+</body>
+</html>

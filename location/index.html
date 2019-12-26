@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>location.href</title>
+</head>
+<body>
+<script>
+    // window.location.href 不会终止当前方法
+    // window.location.replace 不会终止当前方法
+
+    window.location.href = "http://www.baidu.com?_=1";
+    window.location.href = "http://www.baidu.com?_=2";
+    window.location.replace("http://www.baidu.com?_=4");
+    window.location.href = "http://www.baidu.com?_=3";
+
+
+    setTimeout(() => {
+        window.location.href = "http://www.baidu.com?_=3";
+    }, 1000);
+</script>
+</body>
+</html>

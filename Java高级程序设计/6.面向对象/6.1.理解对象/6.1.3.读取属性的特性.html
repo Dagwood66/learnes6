@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>属性类型</title>
+</head>
+<body>
+<script>
+    let book = {
+        test: "1"
+    };
+    Object.defineProperties(book, {
+        _year: {
+            value: 2004
+        },
+        edition: {
+            value: 1,
+        },
+        year: {
+            get() {
+                return this._year;
+            },
+            set(v) {
+                if (v > 2004) {
+                    this._year = v;
+                    this.edition += v - 2004;
+                }
+            }
+        }
+    });
+
+    console.log(Object.getOwnPropertyDescriptor(book, "test"));
+    console.log(Object.getOwnPropertyDescriptor(book, "_year"));
+    console.log(Object.getOwnPropertyDescriptor(book, "year"));
+</script>
+</body>
+</html>
