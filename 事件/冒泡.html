@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            box-sizing: border-box;
+            margin: 2vw auto;
+            padding: 2vw;
+            width: 80%;
+            border: 1px sandybrown solid;
+
+            text-align: center;
+            word-break: keep-all;
+        }
+    </style>
+</head>
+<body>
+<div id="root" onclick="handleClick(1)">
+    外层1
+    <div id="div1" onclick="handleClick(2)">
+        外层2(阻止冒泡)
+        <div>
+            外层3(无事件监听)
+            <div onclick="handleClick(4)">
+                当前层
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function handleClick(str) {
+        console.log(str);
+        // 忽略冒泡事件
+        if (event.srcElement === document.querySelector("#root")) {
+            console.log("根元素被点击");
+        }
+        // 阻止冒泡
+        if (event.srcElement === document.querySelector("#div1")) {
+            console.log("阻止冒泡");
+            event.stopPropagation();
+        }
+    }
+</script>
+</body>
+</html>

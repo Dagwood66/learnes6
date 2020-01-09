@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>input被遮盖</title>
+    <meta name="viewport" content="width=device-width">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        input {
+            margin: 5vw 0;
+            height: 10vw;
+            width: 100vw;
+        }
+    </style>
+</head>
+<body>
+<div>input被遮盖</div>
+<label>
+    <input style="margin-top: 100%;" type="text" alt="" value="普通输入框" onfocus="handleFocus()">
+</label>
+<div style="position: relative;">
+    <label>
+        <input style="position: absolute;top: 0;left: 0;" type="text" alt="" value="定位输入框" onfocus="handleFocus()">
+    </label>
+</div>
+<script>
+    function handleFocus() {
+        setTimeout(() => {
+            document.activeElement.scrollIntoView(true);
+        }, 200)
+    }
+</script>
+</body>
+</html>
