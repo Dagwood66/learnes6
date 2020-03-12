@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function timeout(ms) {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                reject("error")
+            }, ms);
+        })
+    }
+
+    // 不影响后续代码执行
+    async function asyncPrint(ms) {
+        console.log("start");
+        await timeout(ms).catch(err => {
+            console.log(err);
+        });
+        console.log("end");
+    }
+
+    asyncPrint(1000);
+</script>
+</body>
+</html>

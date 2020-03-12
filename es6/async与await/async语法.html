@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    async function add1(x) {
+        return x;
+    }
+
+    async function add2(x) {
+        throw x;
+    }
+
+    async function add3(x) {
+        return Promise.resolve(x);
+    }
+
+    async function add4(x) {
+        return Promise.reject(x);
+    }
+
+    console.log(add1(1));
+    console.log(add2(1));
+    console.log(add3(1));
+    console.log(add4(1));
+</script>
+</body>
+</html>
