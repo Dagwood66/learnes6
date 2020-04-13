@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <title>触摸事件</title>
+    <style>
+        body, div {
+            margin: 0;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .item {
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<div class="item"></div>
+</body>
+<script>
+    let el = document.querySelector("body");
+    let itemEl = document.querySelector(".item");
+    el.addEventListener("touchmove", function (event) {
+        let targetTouch = event.targetTouches[0];
+        let width = itemEl.offsetWidth;
+        let offsetWidth = el.offsetWidth;
+        if ((targetTouch.pageX - width / 2) < 0) { // 左边界
+            itemEl.style.left = "0px";
+        } else if (targetTouch.pageX > (offsetWidth - width / 2)) { // 右边界
+            itemEl.style.left = offsetWidth - width + "px";
+        } else {
+            itemEl.style.left = targetTouch.pageX - width / 2 + "px";
+        }
+    })
+</script>
+</html>

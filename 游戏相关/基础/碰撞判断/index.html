@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>碰撞判断</title>
+    <style>
+        div, body {
+            margin: 0;
+        }
+
+        body {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .item1 {
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            width: 200px;
+            height: 200px;
+
+            color: white;
+            background-color: red;
+        }
+
+        .item2 {
+            position: absolute;
+            top: 0;
+            left: 0px;
+
+            width: 200px;
+            height: 200px;
+
+            color: white;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+<div class="item1">1111111111111111</div>
+<div class="item2">2222222222222222</div>
+</body>
+<script>
+    // margin 穿透导致 offsetTop 未包含穿透margin
+    let item1Ele = document.querySelector(".item1");
+    let item2Ele = document.querySelector(".item2");
+
+    setInterval(function () {
+        console.log(isCollisionEle(item1Ele, item2Ele))
+    }, 1000);
+
+    function isCollisionEle(el1, el2) {
+        let w1 = el1.offsetWidth;
+        let h1 = el1.offsetHeight;
+        let t1 = getElOffsetTop(el1);
+        let l1 = getElOffsetLeft(el1);
+        let w2 = el2.offsetWidth;
+        let h2 = el2.offsetHeight;
+        let t2 = getElOffsetTop(el2);
+        let l2 = getElOffsetLeft(el2);
+        return isCollision(t1, l1, w1, h1, t2, l2, w2, h2)
+    }
+
+    function isCollision(t1, l1, w1, h1, t2, l2, w2, h2) {
+        if (l1 >= l2 && l1 >= l2 + w2) { // 元素1在元素2右侧
+            return false;
+        } else if (l1 <= l2 && l1 + w1 <= l2) { // 元素1在元素2左侧
+            return false;
+        } else if (t1 >= t2 && t1 >= t2 + h2) { // 元素1在元素2下方
+            return false;
+        } else if (t1 <= t2 && t1 + h1 <= t2) { // 元素1在元素2上方
+            return false;
+        }
+        return true;
+    }
+
+    function getElOffsetTop(el) {
+        let offsetTop = 0;
+        while (el != null) {
+            offsetTop += el.offsetTop;
+            el = el.offsetParent;
+        }
+        return offsetTop;
+    }
+
+    function getElOffsetLeft(el) {
+        let offsetLeft = 0;
+        while (el != null) {
+            offsetLeft += el.offsetLeft;
+            el = el.offsetParent;
+        }
+        return offsetLeft;
+    }
+</script>
+</html>

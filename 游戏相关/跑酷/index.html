@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <title>跑酷</title>
+    <style>
+        body, div {
+            margin: 0;
+        }
+
+        body {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        #person {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+        }
+
+        .obstacle_wrap {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+
+            overflow: hidden;
+        }
+
+        .obstacle {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .btn-wrap {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+<div class="obstacle_wrap">
+    <div class="obstacle">障碍物</div>
+    <div class="obstacle">障碍物</div>
+    <div class="obstacle">障碍物</div>
+    <div class="obstacle">障碍物</div>
+    <div class="obstacle">障碍物</div>
+    <div class="obstacle">障碍物</div>
+</div>
+<div id="person">人</div>
+<div class="btn-wrap">
+    <button onclick="start()">开始游戏</button>
+</div>
+<script>
+    // 注意事项 下落元素-TOP重置需避免left重叠
+    let parentEl = document.querySelector("body")
+    let personEl = parentEl.querySelector("#person");
+    let obstacleWrapEl = parentEl.querySelector(".obstacle_wrap");
+    let rAF = null;
+    let dropSpeed = 2; // 下落速度
+
+    resetPerson();
+    resetObstacle();
+
+    function start() {
+        bindListener();
+        startLoop();
+
+        start = function () {
+            resetPerson();
+            resetObstacle();
+            bindListener();
+            startLoop();
+        }
+    }
+
+    function startLoop() {
+        rAF = window.requestAnimationFrame(function () {
+            let els = obstacleWrapEl.querySelectorAll(".obstacle");
+            dropObstacle(els, obstacleWrapEl);
+            if (isGameEnd()) {
+                end();
+            } else {
+                startLoop();
+            }
+        })
+    }
+
+    function end() {
+        unbindListener();
+    }
+
+    function bindListener() {
+        parentEl.addEventListener("touchmove", touchMoveListener);
+    }
+
+    function unbindListener() {
+        parentEl.removeEventListener("touchmove", touchMoveListener);
+    }
+
+    function touchMoveListener(event) {
+        let targetTouch = event.targetTouches[0];
+        let width = personEl.offsetWidth;
+        let offsetWidth = parentEl.offsetWidth;
+        if ((targetTouch.pageX - width / 2) < 0) { // 左边界
+            personEl.style.left = "0px";
+        } else if (targetTouch.pageX > (offsetWidth - width / 2)) { // 右边界
+            personEl.style.left = offsetWidth - width + "px";
+        } else {
+            personEl.style.left = targetTouch.pageX - width / 2 + "px";
+        }
+    }
+
+    function dropObstacle(els, parentEl) {
+        for (let i = 0; i < els.length; i++) {
+            let el = els[i];
+            let position = getNewPosition(el, parentEl);
+            el.style.top = position.top + "px";
+            el.style.left = position.left + "px";
+        }
+    }
+
+    function resetObstacle() {
+        let dropSpeed = 1;
+        let els = obstacleWrapEl.querySelectorAll(".obstacle");
+        for (let i = 0; i < els.length; i++) {
+            let el = els[i];
+            el.style.top = 80 * i + "px";
+            el.style.left = parseInt(Math.random() * (obstacleWrapEl.offsetWidth - el.offsetWidth) + 1) + "px";
+        }
+    }
+
+    function resetPerson() {
+        personEl.style.left = (parentEl.offsetWidth - personEl.offsetWidth) / 2 + "px";
+    }
+
+    function getNewPosition(el, parentEl) {
+        let top = parseFloat((el.style.top === '' ? "0" : el.style.top).replace(/px/g, ''));
+        let left = parseFloat((el.style.left === '' ? "0" : el.style.left).replace(/px/g, ''));
+        // 正常下落
+        top += dropSpeed;
+        // 下落超出边界
+        if (top > parentEl.offsetHeight) {
+            top = -el.offsetHeight
+            // 重置左右
+            left = parseInt(Math.random() * (parentEl.offsetWidth - el.offsetWidth) + 1)
+            // 加速
+            dropSpeed += 0.1;
+        }
+        return {
+            top: top,
+            left: left,
+        }
+    }
+
+    function isGameEnd() {
+        let els = obstacleWrapEl.querySelectorAll(".obstacle");
+        for (let i = 0; i < els.length; i++) {
+            let el = els[i];
+            if (isCollisionEle(el, personEl)) {
+                return true;
+            }
+        }
+        return false;
+
+        function isCollisionEle(el1, el2) {
+            let w1 = el1.offsetWidth;
+            let h1 = el1.offsetHeight;
+            let t1 = getElOffsetTop(el1);
+            let l1 = getElOffsetLeft(el1);
+            let w2 = el2.offsetWidth;
+            let h2 = el2.offsetHeight;
+            let t2 = getElOffsetTop(el2);
+            let l2 = getElOffsetLeft(el2);
+            return isCollision(t1, l1, w1, h1, t2, l2, w2, h2);
+
+            function getElOffsetTop(el) {
+                let offsetTop = 0;
+                while (el != null) {
+                    offsetTop += el.offsetTop;
+                    el = el.offsetParent;
+                }
+                return offsetTop;
+            }
+
+            function getElOffsetLeft(el) {
+                let offsetLeft = 0;
+                while (el != null) {
+                    offsetLeft += el.offsetLeft;
+                    el = el.offsetParent;
+                }
+                return offsetLeft;
+            }
+        }
+
+        function isCollision(t1, l1, w1, h1, t2, l2, w2, h2) {
+            if (l1 >= l2 && l1 >= l2 + w2) { // 元素1在元素2右侧
+                return false;
+            } else if (l1 <= l2 && l1 + w1 <= l2) { // 元素1在元素2左侧
+                return false;
+            } else if (t1 >= t2 && t1 >= t2 + h2) { // 元素1在元素2下方
+                return false;
+            } else if (t1 <= t2 && t1 + h1 <= t2) { // 元素1在元素2上方
+                return false;
+            }
+            return true;
+        }
+    }
+</script>
+</body>
+</html>
