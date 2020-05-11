@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--标签不区分大小写-->
+<Div>Div</Div>
+<!--属性名不区分大小写-->
+<input title="" placeholder="测试">
+<input title="" Placeholder="测试">
+<!--属性值区分大小写-->
+<div id="div1">div1</div>
+<div id="Div2">div2</div>
+<script>
+    console.log(document.querySelector("#div1"));
+    console.log(document.querySelector("#Div1"));
+</script>
+</body>
+</html>
