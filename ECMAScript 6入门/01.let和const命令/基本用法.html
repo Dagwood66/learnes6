@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>基本用法</title>
+</head>
+
+<body>
+    <script>
+        // let 只在let命令所在的代码块内有效
+        {
+            let a = 10;
+            var b = 1;
+        }
+
+        a; // ReferenceError: a is not defined.
+        b;
+    </script>
+</body>
+
+</html>

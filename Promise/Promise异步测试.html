@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+</head>
+
+<body>
+    <script>
+        (function () {
+            console.log("无异步操作-流程测试-------------------------------------")
+            let logTag = "无异步操作-流程测试-";
+            new Promise((resolve, reject) => {
+                console.log(logTag + 1);
+                resolve();
+                console.log(logTag + 2);
+            }).then(res => {
+                console.log(logTag + 3);
+            }, res => {
+                console.log(logTag + 4);
+            })
+            console.log(logTag + 5);
+        }());
+
+        (function () {
+            console.log("setTimeOut-流程测试-------------------------------------")
+            console.log(1);
+            new Promise((reslove, reject) => {
+                console.log(2);
+                setTimeout(() => {
+                    console.log(6);
+                    reslove();
+                })
+            }).then(res => {
+                console.log(3);
+            }, res => {
+                console.log(4);
+            })
+            console.log(5);
+        }());
+    </script>
+</body>
+
+</html>
